@@ -1,0 +1,288 @@
+import React, { useState, useEffect, useRef } from 'react';
+import { 
+  Cpu, 
+  Layers, 
+  Activity, 
+  Shield, 
+  Code2, 
+  Mail, 
+  Linkedin, 
+  FileText,
+  ChevronRight,
+  Hexagon,
+  Wind,
+  Box,
+  Microscope,
+  Eye,
+  Zap
+} from 'lucide-react';
+
+const App = () => {
+  const [activeProject, setActiveProject] = useState(0);
+  const scrollRef = useRef(null);
+
+  const projects = [
+    {
+      id: 0,
+      tag: "RESEARCH // 01",
+      title: "Neural Adaptive Control",
+      field: "Cyber-Physical Systems",
+      description: "Development of a deep learning-based sequence-to-sequence LSTM framework for modeling nonlinear actuator dynamics in AFM nanopositioners. Implemented black-box identification pipelines.",
+      tech: ["Python", "PyTorch", "LSTM", "B-Splines"],
+      metrics: [
+        { label: "Training Time", value: "-50%" },
+        { label: "Modeling Error", value: "< 1.2%" }
+      ]
+    },
+    {
+      id: 1,
+      tag: "VISION // 02",
+      title: "Autonomous Perception",
+      field: "Computer Vision",
+      description: "Implementation of Fast-SCNN, SegFormer, and YOLOv8 for semantic & instance segmentation on the CityScapes dataset. optimized for real-time road scene understanding.",
+      tech: ["PyTorch", "OpenCV", "YOLOv8", "CUDA"],
+      metrics: [
+        { label: "Inference", value: "Real-time" },
+        { label: "mIoU Score", value: "76.4%" }
+      ]
+    },
+    {
+      id: 2,
+      tag: "DESIGN // 03",
+      title: "Nanopositioning Systems",
+      field: "Precision Engineering",
+      description: "Design and characterization of micro-robotic compliant mechanisms for bridge-amplifier nanopositioners. Validated using static and modal analysis in COMSOL Multiphysics.",
+      tech: ["COMSOL", "MATLAB", "Ansys", "SolidWorks"],
+      metrics: [
+        { label: "Bandwidth", value: "High-Freq" },
+        { label: "Stability", value: "Micron-lvl" }
+      ]
+    }
+  ];
+
+  // Intersection observer to change the "Canvas" content based on scroll
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setActiveProject(parseInt(entry.target.getAttribute('data-index')));
+          }
+        });
+      },
+      { threshold: 0.6 }
+    );
+
+    const projectElements = document.querySelectorAll('.project-section');
+    projectElements.forEach((el) => observer.observe(el));
+
+    return () => observer.disconnect();
+  }, []);
+
+  return (
+    <div className="flex flex-col md:flex-row min-h-screen bg-[#0a0a0a] text-zinc-400 font-sans overflow-x-hidden selection:bg-blue-500/30">
+      
+      {/* LEFT: NARRATIVE SIDE */}
+      <div className="w-full md:w-1/2 p-6 md:p-16 lg:p-24 relative">
+        
+        {/* Navigation / Header */}
+        <nav className="mb-24 flex justify-between items-center">
+          <div className="flex items-center gap-2 group cursor-default">
+            <div className="w-8 h-8 bg-blue-600 rounded-sm flex items-center justify-center text-white font-bold text-xs tracking-tighter">
+              SS
+            </div>
+            <div className="leading-none">
+              <p className="text-white text-sm font-semibold uppercase tracking-widest">Srinandana Yogananda Sastry</p>
+              <p className="text-[10px] font-mono text-zinc-600">M.S. MECHANICAL ENG.</p>
+            </div>
+          </div>
+          <div className="flex gap-6 text-[11px] font-mono uppercase tracking-widest">
+            <a href="#work" className="hover:text-blue-500 transition-colors">Work</a>
+            <a href="#cv" className="hover:text-blue-500 transition-colors">CV</a>
+            <a href="#contact" className="hover:text-blue-500 transition-colors text-zinc-600">Connect</a>
+          </div>
+        </nav>
+
+        {/* Hero Section */}
+        <section className="mb-48">
+          <h1 className="text-4xl md:text-6xl font-light text-zinc-100 leading-tight mb-8">
+            Optimizing dynamics with <span className="text-blue-500 italic">computational</span> intelligence.
+          </h1>
+          <p className="max-w-md text-lg text-zinc-500 mb-10 leading-relaxed">
+            Mechanical Engineering Graduate Student at Iowa State University. Specializing in Machine Learning for Cyber-Physical Systems, solid modeling, and complex design optimization.
+          </p>
+          <div className="flex gap-4">
+            <button className="px-5 py-2.5 bg-zinc-900 border border-zinc-800 text-white text-xs font-mono uppercase tracking-widest hover:border-blue-500 transition-all">
+              Download CV
+            </button>
+            <div className="flex items-center gap-3 px-4 border-l border-zinc-800 ml-4">
+              <Linkedin className="w-4 h-4 hover:text-blue-500 cursor-pointer" />
+              <Mail className="w-4 h-4 hover:text-blue-500 cursor-pointer" />
+            </div>
+          </div>
+        </section>
+
+        {/* Project List */}
+        <div id="work" className="space-y-48">
+          {projects.map((project, index) => (
+            <div 
+              key={project.id} 
+              data-index={index} 
+              className="project-section space-y-8 pt-12 border-t border-zinc-900 group"
+            >
+              <div className="flex justify-between items-start">
+                <span className="font-mono text-[10px] tracking-[0.3em] text-blue-500/70">{project.tag}</span>
+                <span className="font-mono text-[10px] text-zinc-700">COORD_0{index + 1}</span>
+              </div>
+              
+              <h2 className="text-3xl text-zinc-100 group-hover:text-blue-400 transition-colors cursor-default">
+                {project.title}
+              </h2>
+              
+              <p className="text-zinc-500 leading-relaxed max-w-lg">
+                {project.description}
+              </p>
+
+              <div className="flex flex-wrap gap-2">
+                {project.tech.map(t => (
+                  <span key={t} className="px-3 py-1 bg-zinc-900/50 border border-zinc-800 text-[10px] font-mono rounded-full uppercase">
+                    {t}
+                  </span>
+                ))}
+              </div>
+
+              <div className="grid grid-cols-2 gap-8 border-l border-blue-900/30 pl-6">
+                {project.metrics.map(m => (
+                  <div key={m.label}>
+                    <p className="text-white text-xl font-light">{m.value}</p>
+                    <p className="text-[10px] font-mono uppercase text-zinc-600">{m.label}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          ))}
+        </div>
+
+        {/* Footer info */}
+        <footer className="mt-48 py-12 border-t border-zinc-900 opacity-40 hover:opacity-100 transition-opacity">
+          <div className="flex justify-between font-mono text-[10px] uppercase tracking-tighter">
+            <span>Built 2026 // React v18</span>
+            <span>Ames, Iowa</span>
+          </div>
+        </footer>
+      </div>
+
+      {/* RIGHT: FIXED VISUAL CANVAS */}
+      <div className="hidden md:block w-1/2 h-screen sticky top-0 overflow-hidden bg-[#0c0c0c]">
+        {/* Background Grid Pattern */}
+        <div className="absolute inset-0 opacity-[0.03]" 
+             style={{ backgroundImage: `linear-gradient(#fff 1px, transparent 1px), linear-gradient(90deg, #fff 1px, transparent 1px)`, backgroundSize: '40px 40px' }}>
+        </div>
+
+        {/* Main Viewport */}
+        <div className="relative h-full w-full flex flex-col items-center justify-center p-20">
+          
+          {/* Status Bar */}
+          <div className="absolute top-8 left-8 right-8 flex justify-between font-mono text-[9px] text-zinc-600 border-b border-zinc-900 pb-2 uppercase tracking-widest">
+            <div className="flex items-center gap-2">
+              <span className="w-2 h-2 rounded-full bg-green-500 animate-pulse"></span>
+              Live_Render_Engine
+            </div>
+            <div>REF: {projects[activeProject].title.split(' ').join('_').toUpperCase()}</div>
+          </div>
+
+          {/* Dynamic Content Container */}
+          <div className="w-full h-full relative flex items-center justify-center transition-all duration-700">
+            
+            {/* Project 0 Visual: AFM/Control (Hysteresis Loop Simulation) */}
+            {activeProject === 0 && (
+              <div className="relative animate-in fade-in duration-1000">
+                <div className="relative w-80 h-80 border border-zinc-800 rounded-full flex items-center justify-center">
+                   {/* Orbiting elements representing LSTM nodes */}
+                   <div className="absolute inset-0 border border-blue-500/20 rounded-full animate-[spin_4s_linear_infinite]"></div>
+                   <div className="absolute inset-8 border border-blue-500/10 rounded-full animate-[spin_8s_linear_infinite_reverse]"></div>
+                   
+                   <Microscope className="w-16 h-16 text-blue-500 opacity-50 stroke-[1]" />
+                   
+                   <div className="absolute -top-6 left-1/2 -translate-x-1/2 bg-[#0c0c0c] px-2 text-[9px] font-mono text-zinc-500 text-center">
+                     NONLINEAR_HYSTERESIS<br/>COMPENSATION
+                   </div>
+                </div>
+                {/* Simulated Neural Connections */}
+                <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-1 bg-gradient-to-r from-transparent via-blue-500/20 to-transparent rotate-45"></div>
+                <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-1 bg-gradient-to-r from-transparent via-blue-500/20 to-transparent -rotate-45"></div>
+              </div>
+            )}
+
+            {/* Project 1 Visual: Computer Vision (Scanning/Segmentation) */}
+            {activeProject === 1 && (
+              <div className="grid grid-cols-2 gap-4 w-full max-w-md animate-in slide-in-from-bottom-8 duration-700">
+                {[1,2,3,4].map(i => (
+                  <div key={i} className="h-32 border border-zinc-800 bg-zinc-900/20 flex flex-col p-4 justify-between relative group overflow-hidden">
+                    {/* Scanning Line Effect */}
+                    <div className="absolute top-0 left-0 w-full h-1 bg-blue-500/50 animate-[ping_2s_cubic-bezier(0,0,0.2,1)_infinite]"></div>
+                    
+                    <Eye className="w-4 h-4 text-blue-400" />
+                    <div className="space-y-1">
+                      <div className="w-full h-1 bg-zinc-800 rounded-full overflow-hidden">
+                         <div className="h-full bg-blue-500" style={{width: `${Math.random() * 60 + 40}%`}}></div>
+                      </div>
+                      <div className="w-2/3 h-1 bg-zinc-800 rounded-full overflow-hidden">
+                         <div className="h-full bg-blue-500" style={{width: `${Math.random() * 60 + 40}%`}}></div>
+                      </div>
+                    </div>
+                    <span className="font-mono text-[8px] text-zinc-600">CLASS_ID_{i}_SEGMENT</span>
+                  </div>
+                ))}
+              </div>
+            )}
+
+            {/* Project 2 Visual: Nanometrology (Stress/Strain/Design) */}
+            {activeProject === 2 && (
+              <div className="relative flex flex-col items-center gap-12 animate-in zoom-in duration-1000">
+                <div className="w-64 h-64 bg-zinc-900/30 rounded-xl border border-zinc-700 flex items-center justify-center relative overflow-hidden">
+                   {/* Flexure Mechanism Representation */}
+                   <div className="absolute inset-0 flex items-center justify-center">
+                      <div className="w-48 h-1 bg-zinc-600 rotate-0"></div>
+                      <div className="w-1 h-48 bg-zinc-600 rotate-0"></div>
+                      <div className="w-32 h-32 border border-zinc-500/40 rotate-45 transform transition-transform duration-[3000ms] hover:rotate-90"></div>
+                   </div>
+                   <Zap className="w-24 h-24 text-zinc-100 opacity-10 stroke-[0.5]" />
+                   
+                   {/* FEA Gradient Overlay */}
+                   <div className="absolute inset-0 bg-gradient-to-tr from-blue-500/10 via-transparent to-red-500/10 mix-blend-overlay"></div>
+                </div>
+                <div className="w-full space-y-2">
+                   <div className="flex justify-between font-mono text-[9px]">
+                      <span>Displacement</span>
+                      <span className="text-blue-400">1.2 µm</span>
+                   </div>
+                   <div className="w-full h-1 bg-zinc-900">
+                      <div className="h-full bg-gradient-to-r from-blue-500 to-white w-1/2 animate-pulse"></div>
+                   </div>
+                </div>
+              </div>
+            )}
+          </div>
+
+          {/* Bottom Controls / Lab Labels */}
+          <div className="absolute bottom-8 left-8 flex gap-8">
+            <div className="space-y-1">
+              <p className="font-mono text-[8px] uppercase text-zinc-700">Data_Input</p>
+              <div className="flex gap-1">
+                {[...Array(4)].map((_, i) => <div key={i} className="w-1 h-1 bg-zinc-800"></div>)}
+                <div className="w-1 h-1 bg-blue-500"></div>
+              </div>
+            </div>
+            <div className="space-y-1">
+              <p className="font-mono text-[8px] uppercase text-zinc-700">Proc_Status</p>
+              <p className="font-mono text-[9px] text-zinc-500">OPTIMIZED_STATE</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default App;
