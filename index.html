@@ -71,16 +71,16 @@
             transform: scale(1);
         }
         
-        /* Specific styling for the hero image container */
+        /* Specific styling for the hero image container - CENTERED */
         .hero-image-container {
             position: absolute;
-            right: 0;
+            left: 50%;
             top: 50%;
-            transform: translateY(-50%);
-            width: 50%; /* Spans from middle to right edge */
-            height: 60%; /* Adjusted height */
+            transform: translate(-50%, -50%); /* Centering transform */
+            width: 60%; /* Adjusted width for better proportion */
+            height: 70%; /* Adjusted height */
             overflow: hidden;
-            border-left: 1px solid #27272a; /* Zinc-800 */
+            border: 1px solid #27272a; /* Zinc-800 */
         }
 
         .hero-image-container img {
@@ -124,6 +124,7 @@
                    I'm a Mechanical Engineering Graduate Student at Iowa State University. Specializing in Machine Learning for Cyber-Physical Systems, solid modeling, and complex design optimization.
                 </p>
                 <div class="flex gap-4">
+                    <!-- Ensure the file "Srinandana_CV (3).pdf" is in the same folder as this HTML file -->
                     <a href="Srinandana_CV (3).pdf" target="_blank" class="px-5 py-2.5 bg-zinc-900 border border-zinc-800 text-white text-xs font-mono uppercase tracking-widest hover:border-blue-500 transition-all text-center flex items-center">
                         Here's my CV
                     </a>
