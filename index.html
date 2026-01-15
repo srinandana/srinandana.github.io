@@ -322,12 +322,8 @@
                     <!-- Project 01: SAE -->
                     <div class="project-card border border-zinc-800 p-0 rounded-lg cursor-default group hover:bg-zinc-900/50 transition-all overflow-hidden bg-zinc-900/20">
                         <div class="mini-render-window">
-                            <!-- Visual: Wind Tunnel -->
-                            <div class="w-full h-full relative overflow-hidden">
-                                <div class="absolute top-1/4 left-[-100%] w-[200%] h-[1px] bg-zinc-700 animate-scan" style="transform: rotate(90deg);"></div>
-                                <div class="absolute top-2/4 left-[-100%] w-[200%] h-[1px] bg-blue-900/50 animate-scan" style="animation-delay: 0.5s; transform: rotate(90deg);"></div>
-                                <i data-lucide="plane" class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-8 h-8 text-zinc-200 -rotate-45"></i>
-                            </div>
+                            <!-- Visual: Image for SAE -->
+                            <img src="Redrocket.jpg" alt="SAE Micro Class Aircraft" class="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity">
                         </div>
                         <div class="p-6 pt-0 flex flex-col flex-grow">
                             <div class="flex justify-between items-start mb-4">
@@ -404,71 +400,73 @@
                     </div>
                 </div>
 
-                <!-- Row 2: 3 Projects -->
-                <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
-                    
-                    <!-- Project 05: NLP -->
-                    <div class="project-card border border-zinc-800 p-0 rounded-lg cursor-default group hover:bg-zinc-900/50 transition-all overflow-hidden bg-zinc-900/20">
-                        <div class="mini-render-window p-4 font-mono text-[8px] flex flex-col justify-center">
-                            <div class="text-green-500 mb-1">>> analyzing...</div>
-                            <div class="text-zinc-500">[SENTIMENT]: POSITIVE</div>
-                            <div class="text-zinc-500">[TOPIC]: "Lecture"</div>
-                        </div>
-                        <div class="p-6 pt-0 flex flex-col flex-grow">
-                            <div class="flex justify-between items-start mb-4">
-                                <span class="font-mono text-[10px] tracking-widest text-blue-500/70">NLP</span>
+                <!-- Row 2: 3 Projects - CENTERED AND SAME WIDTH -->
+                <div class="flex justify-center">
+                    <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6 w-full xl:w-3/4">
+                        
+                        <!-- Project 05: NLP -->
+                        <div class="project-card border border-zinc-800 p-0 rounded-lg cursor-default group hover:bg-zinc-900/50 transition-all overflow-hidden bg-zinc-900/20">
+                            <div class="mini-render-window p-4 font-mono text-[8px] flex flex-col justify-center">
+                                <div class="text-green-500 mb-1">>> analyzing...</div>
+                                <div class="text-zinc-500">[SENTIMENT]: POSITIVE</div>
+                                <div class="text-zinc-500">[TOPIC]: "Lecture"</div>
                             </div>
-                            <h3 class="text-base text-zinc-100 font-medium mb-2 group-hover:text-blue-400 transition-colors">Review Analysis</h3>
-                            <p class="text-xs text-zinc-500 mb-4 line-clamp-3 flex-grow">NLP pipeline in R using sLDA to analyze professor reviews and identify key rating topics.</p>
-                            <div class="flex gap-2 flex-wrap mt-auto">
-                                <span class="text-[9px] font-mono px-2 py-1 bg-zinc-900 border border-zinc-800 rounded text-zinc-400">R</span>
+                            <div class="p-6 pt-0 flex flex-col flex-grow">
+                                <div class="flex justify-between items-start mb-4">
+                                    <span class="font-mono text-[10px] tracking-widest text-blue-500/70">NLP</span>
+                                </div>
+                                <h3 class="text-base text-zinc-100 font-medium mb-2 group-hover:text-blue-400 transition-colors">Review Analysis</h3>
+                                <p class="text-xs text-zinc-500 mb-4 line-clamp-3 flex-grow">NLP pipeline in R using sLDA to analyze professor reviews and identify key rating topics.</p>
+                                <div class="flex gap-2 flex-wrap mt-auto">
+                                    <span class="text-[9px] font-mono px-2 py-1 bg-zinc-900 border border-zinc-800 rounded text-zinc-400">R</span>
+                                </div>
                             </div>
                         </div>
-                    </div>
 
-                    <!-- Project 06: GPU Heat -->
-                    <div class="project-card border border-zinc-800 p-0 rounded-lg cursor-default group hover:bg-zinc-900/50 transition-all overflow-hidden bg-zinc-900/20">
-                        <div class="mini-render-window">
-                            <!-- Visual: Heat Map -->
-                            <div class="absolute inset-0 bg-gradient-to-tr from-blue-900 to-red-900 opacity-50 animate-pulse"></div>
-                            <div class="absolute inset-0 grid grid-cols-6 gap-px opacity-20">
-                                <div class="bg-white/10"></div><div class="bg-white/10"></div><div class="bg-white/10"></div>
-                                <div class="bg-white/10"></div><div class="bg-white/10"></div><div class="bg-white/10"></div>
+                        <!-- Project 06: GPU Heat -->
+                        <div class="project-card border border-zinc-800 p-0 rounded-lg cursor-default group hover:bg-zinc-900/50 transition-all overflow-hidden bg-zinc-900/20">
+                            <div class="mini-render-window">
+                                <!-- Visual: Heat Map -->
+                                <div class="absolute inset-0 bg-gradient-to-tr from-blue-900 to-red-900 opacity-50 animate-pulse"></div>
+                                <div class="absolute inset-0 grid grid-cols-6 gap-px opacity-20">
+                                    <div class="bg-white/10"></div><div class="bg-white/10"></div><div class="bg-white/10"></div>
+                                    <div class="bg-white/10"></div><div class="bg-white/10"></div><div class="bg-white/10"></div>
+                                </div>
+                                <span class="relative z-10 font-mono text-xl font-bold text-white">CUDA</span>
                             </div>
-                            <span class="relative z-10 font-mono text-xl font-bold text-white">CUDA</span>
+                            <div class="p-6 pt-0 flex flex-col flex-grow">
+                                <div class="flex justify-between items-start mb-4">
+                                    <span class="font-mono text-[10px] tracking-widest text-blue-500/70">HPC</span>
+                                </div>
+                                <h3 class="text-base text-zinc-100 font-medium mb-2 group-hover:text-blue-400 transition-colors">GPU Heat Transfer</h3>
+                                <p class="text-xs text-zinc-500 mb-4 line-clamp-3 flex-grow">CUDA-based GPU implementation for solving 2D transient heat transfer equations.</p>
+                                <div class="flex gap-2 flex-wrap mt-auto">
+                                    <span class="text-[9px] font-mono px-2 py-1 bg-zinc-900 border border-zinc-800 rounded text-zinc-400">CUDA</span>
+                                </div>
+                            </div>
                         </div>
-                        <div class="p-6 pt-0 flex flex-col flex-grow">
-                            <div class="flex justify-between items-start mb-4">
-                                <span class="font-mono text-[10px] tracking-widest text-blue-500/70">HPC</span>
-                            </div>
-                            <h3 class="text-base text-zinc-100 font-medium mb-2 group-hover:text-blue-400 transition-colors">GPU Heat Transfer</h3>
-                            <p class="text-xs text-zinc-500 mb-4 line-clamp-3 flex-grow">CUDA-based GPU implementation for solving 2D transient heat transfer equations.</p>
-                            <div class="flex gap-2 flex-wrap mt-auto">
-                                <span class="text-[9px] font-mono px-2 py-1 bg-zinc-900 border border-zinc-800 rounded text-zinc-400">CUDA</span>
-                            </div>
-                        </div>
-                    </div>
 
-                    <!-- Project 07: Vision -->
-                    <div class="project-card border border-zinc-800 p-0 rounded-lg cursor-default group hover:bg-zinc-900/50 transition-all overflow-hidden bg-zinc-900/20">
-                        <div class="mini-render-window relative">
-                            <!-- Visual: Segmentation -->
-                            <div class="absolute bottom-0 w-full h-1/2 bg-zinc-800 skew-x-12 opacity-50"></div>
-                            <div class="absolute top-4 left-4 w-6 h-6 border border-green-500 animate-pulse"></div>
-                            <div class="absolute top-8 right-8 w-8 h-6 border border-red-500 animate-pulse delay-100"></div>
-                        </div>
-                        <div class="p-6 pt-0 flex flex-col flex-grow">
-                            <div class="flex justify-between items-start mb-4">
-                                <span class="font-mono text-[10px] tracking-widest text-blue-500/70">VISION</span>
+                        <!-- Project 07: Vision -->
+                        <div class="project-card border border-zinc-800 p-0 rounded-lg cursor-default group hover:bg-zinc-900/50 transition-all overflow-hidden bg-zinc-900/20">
+                            <div class="mini-render-window relative">
+                                <!-- Visual: Segmentation -->
+                                <div class="absolute bottom-0 w-full h-1/2 bg-zinc-800 skew-x-12 opacity-50"></div>
+                                <div class="absolute top-4 left-4 w-6 h-6 border border-green-500 animate-pulse"></div>
+                                <div class="absolute top-8 right-8 w-8 h-6 border border-red-500 animate-pulse delay-100"></div>
                             </div>
-                            <h3 class="text-base text-zinc-100 font-medium mb-2 group-hover:text-blue-400 transition-colors">Road Segmentation</h3>
-                            <p class="text-xs text-zinc-500 mb-4 line-clamp-3 flex-grow">Semantic segmentation on CityScapes dataset using Fast-SCNN, SegFormer, and YOLOv8.</p>
-                            <div class="flex gap-2 flex-wrap mt-auto">
-                                <span class="text-[9px] font-mono px-2 py-1 bg-zinc-900 border border-zinc-800 rounded text-zinc-400">PyTorch</span>
+                            <div class="p-6 pt-0 flex flex-col flex-grow">
+                                <div class="flex justify-between items-start mb-4">
+                                    <span class="font-mono text-[10px] tracking-widest text-blue-500/70">VISION</span>
+                                </div>
+                                <h3 class="text-base text-zinc-100 font-medium mb-2 group-hover:text-blue-400 transition-colors">Road Segmentation</h3>
+                                <p class="text-xs text-zinc-500 mb-4 line-clamp-3 flex-grow">Semantic segmentation on CityScapes dataset using Fast-SCNN, SegFormer, and YOLOv8.</p>
+                                <div class="flex gap-2 flex-wrap mt-auto">
+                                    <span class="text-[9px] font-mono px-2 py-1 bg-zinc-900 border border-zinc-800 rounded text-zinc-400">PyTorch</span>
+                                </div>
                             </div>
                         </div>
-                    </div>
 
+                    </div>
                 </div>
             </div>
         </div>
