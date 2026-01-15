@@ -109,9 +109,9 @@
                     </div>
                 </div>
                 <div class="flex gap-6 text-[11px] font-mono uppercase tracking-widest">
-                    <a href="#work" class="hover:text-blue-500 transition-colors">Work</a>
-                    <a href="#cv" class="hover:text-blue-500 transition-colors">CV</a>
-                    <a href="#contact" class="hover:text-blue-500 transition-colors text-zinc-600">Connect</a>
+                    <a href="#experience" class="hover:text-blue-500 transition-colors">Experience</a>
+                    <a href="#projects" class="hover:text-blue-500 transition-colors">Projects</a>
+                    <a href="#contact" class="hover:text-blue-500 transition-colors text-zinc-600">Contact</a>
                 </div>
             </nav>
 
@@ -137,14 +137,313 @@
                 </div>
             </section>
 
-            <!-- Project List -->
-            <div id="work" class="space-y-48">
+            <!-- 1. Experience Section -->
+            <div id="experience" class="space-y-16 mb-48">
+                <div class="flex items-center gap-4 mb-8">
+                    <h2 class="text-xs font-mono uppercase tracking-widest text-blue-500">01 // Experience</h2>
+                    <div class="h-[1px] bg-zinc-800 flex-grow"></div>
+                </div>
+
+                <!-- Role 1 -->
+                <div class="space-y-2">
+                    <div class="flex justify-between items-baseline">
+                        <h3 class="text-xl text-zinc-100 font-medium">Research Assistant</h3>
+                        <span class="text-xs font-mono text-zinc-600">MAY 2025 — PRESENT</span>
+                    </div>
+                    <p class="text-sm text-blue-500 font-mono mb-4">Iowa State University // NSF Funded AI-Based AFM Project</p>
+                    <ul class="list-disc list-outside ml-4 text-zinc-500 space-y-2 leading-relaxed text-sm">
+                        <li>Designing a deep learning-based sequence-to-sequence LSTM framework for modeling nonlinear actuator dynamics.</li>
+                        <li>Developing black-box identification pipelines for nonlinear hysteretic systems to improve precision.</li>
+                        <li>Reduced training time by 50% using GPU-based computation and B-spline decomposition.</li>
+                    </ul>
+                </div>
+
+                <!-- Role 2 -->
+                <div class="space-y-2">
+                    <div class="flex justify-between items-baseline">
+                        <h3 class="text-xl text-zinc-100 font-medium">Teaching Assistant</h3>
+                        <span class="text-xs font-mono text-zinc-600">AUG 2024 — PRESENT</span>
+                    </div>
+                    <p class="text-sm text-blue-500 font-mono mb-4">Iowa State University // Heat Transfer & System Dynamics</p>
+                    <ul class="list-disc list-outside ml-4 text-zinc-500 space-y-2 leading-relaxed text-sm">
+                        <li>Supporting 100+ students through labs and recitations for ME 4360 and ME 4210.</li>
+                        <li>Facilitating lab safety protocols and training students on specialized thermal equipment.</li>
+                        <li>Achieved strong performance feedback (4.3/5.0) for instructional outcomes.</li>
+                    </ul>
+                </div>
+
+                <!-- Role 3 -->
+                <div class="space-y-2">
+                    <div class="flex justify-between items-baseline">
+                        <h3 class="text-xl text-zinc-100 font-medium">Research Intern</h3>
+                        <span class="text-xs font-mono text-zinc-600">JUL 2023 — FEB 2024</span>
+                    </div>
+                    <p class="text-sm text-blue-500 font-mono mb-4">Indian Institute of Science (IISc) // Nanometrology Lab</p>
+                    <ul class="list-disc list-outside ml-4 text-zinc-500 space-y-2 leading-relaxed text-sm">
+                        <li>Investigated micro-robotic compliant mechanism designs for bridge-amplifier nanopositioners.</li>
+                        <li>Conducted static and modal characterization using COMSOL Multiphysics and MATLAB.</li>
+                        <li>Collaborated with fabrication teams to support prototype development.</li>
+                    </ul>
+                </div>
+
+                <!-- Role 4 (New) -->
+                <div class="space-y-2">
+                    <div class="flex justify-between items-baseline">
+                        <h3 class="text-xl text-zinc-100 font-medium">Mechanical Design Intern</h3>
+                        <span class="text-xs font-mono text-zinc-600">SEP 2022 — NOV 2022</span>
+                    </div>
+                    <p class="text-sm text-blue-500 font-mono mb-4">Ace Designers Ltd. // Innovation & Growth Department</p>
+                    <ul class="list-disc list-outside ml-4 text-zinc-500 space-y-2 leading-relaxed text-sm">
+                        <li>Researched machinery design and performed root cause analysis to identify opportunities for system improvements.</li>
+                        <li>Created and optimized 3D CAD models, focusing on sheet metal parts and assemblies under tight deadlines.</li>
+                        <li>Led systematic disassembly of machines, assigning unique IDs for accurate identification and process documentation.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- 2. Projects Section (Updated with 8 Projects) -->
+            <div id="projects" class="space-y-48">
+                 <div class="flex items-center gap-4 mb-8">
+                    <h2 class="text-xs font-mono uppercase tracking-widest text-blue-500">02 // Projects</h2>
+                    <div class="h-[1px] bg-zinc-800 flex-grow"></div>
+                </div>
                 
-                <!-- Project 01: AFM Control -->
-                <div data-index="0" class="project-section space-y-8 pt-12 border-t border-zinc-900 group">
+                <!-- Project 01: SAE Aircraft -->
+                <div data-index="0" class="project-section space-y-8 pt-12 group">
                     <div class="flex justify-between items-start">
-                        <span class="font-mono text-[10px] tracking-[0.3em] text-blue-500/70">RESEARCH // 01</span>
+                        <span class="font-mono text-[10px] tracking-[0.3em] text-blue-500/70">AEROSPACE // 01</span>
                         <span class="font-mono text-[10px] text-zinc-700">COORD_01</span>
+                    </div>
+                    
+                    <h2 class="text-3xl text-zinc-100 group-hover:text-blue-400 transition-colors cursor-default">
+                        SAE Aero Design Competition – Micro Class
+                    </h2>
+                    
+                    <p class="text-zinc-500 leading-relaxed max-w-lg">
+                        Led a team of 18 to design and test a micro-class aircraft, achieving 6th place worldwide. Integrated aerospace systems, packaging constraints, and process optimization into design.
+                    </p>
+
+                    <div class="flex flex-wrap gap-2">
+                        <span class="px-3 py-1 bg-zinc-900/50 border border-zinc-800 text-[10px] font-mono rounded-full uppercase">SolidWorks</span>
+                        <span class="px-3 py-1 bg-zinc-900/50 border border-zinc-800 text-[10px] font-mono rounded-full uppercase">Leadership</span>
+                        <span class="px-3 py-1 bg-zinc-900/50 border border-zinc-800 text-[10px] font-mono rounded-full uppercase">Rapid Prototyping</span>
+                    </div>
+
+                    <div class="grid grid-cols-2 gap-8 border-l border-blue-900/30 pl-6">
+                        <div>
+                            <p class="text-white text-xl font-light">6th</p>
+                            <p class="text-[10px] font-mono uppercase text-zinc-600">Global Rank</p>
+                        </div>
+                        <div>
+                            <p class="text-white text-xl font-light">450W</p>
+                            <p class="text-[10px] font-mono uppercase text-zinc-600">Power Constraint</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 02: Self Stabilizing Spoon -->
+                <div data-index="1" class="project-section space-y-8 pt-12 border-t border-zinc-900 group">
+                    <div class="flex justify-between items-start">
+                        <span class="font-mono text-[10px] tracking-[0.3em] text-blue-500/70">ROBOTICS // 02</span>
+                        <span class="font-mono text-[10px] text-zinc-700">COORD_02</span>
+                    </div>
+                    
+                    <h2 class="text-3xl text-zinc-100 group-hover:text-blue-400 transition-colors cursor-default">
+                        Self-Stabilizing Spoon for Parkinson’s
+                    </h2>
+                    
+                    <p class="text-zinc-500 leading-relaxed max-w-lg">
+                        Designed and tested assistive mechatronic systems using sensors, microcontrollers, and embedded programming. Applied systems integration and controller design for user-focused innovation.
+                    </p>
+
+                    <div class="flex flex-wrap gap-2">
+                        <span class="px-3 py-1 bg-zinc-900/50 border border-zinc-800 text-[10px] font-mono rounded-full uppercase">Arduino</span>
+                        <span class="px-3 py-1 bg-zinc-900/50 border border-zinc-800 text-[10px] font-mono rounded-full uppercase">PID Control</span>
+                        <span class="px-3 py-1 bg-zinc-900/50 border border-zinc-800 text-[10px] font-mono rounded-full uppercase">MEMS Gyro</span>
+                    </div>
+
+                    <div class="grid grid-cols-2 gap-8 border-l border-blue-900/30 pl-6">
+                        <div>
+                            <p class="text-white text-xl font-light">Real-time</p>
+                            <p class="text-[10px] font-mono uppercase text-zinc-600">Stabilization</p>
+                        </div>
+                        <div>
+                            <p class="text-white text-xl font-light">Embedded</p>
+                            <p class="text-[10px] font-mono uppercase text-zinc-600">Systems</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 03: RFID Rig -->
+                <div data-index="2" class="project-section space-y-8 pt-12 border-t border-zinc-900 group">
+                    <div class="flex justify-between items-start">
+                        <span class="font-mono text-[10px] tracking-[0.3em] text-blue-500/70">IOT // 03</span>
+                        <span class="font-mono text-[10px] text-zinc-700">COORD_03</span>
+                    </div>
+                    
+                    <h2 class="text-3xl text-zinc-100 group-hover:text-blue-400 transition-colors cursor-default">
+                        RFID-Enabled Cycle Counter
+                    </h2>
+                    
+                    <p class="text-zinc-500 leading-relaxed max-w-lg">
+                        Developed an IoT-enabled system for real-time cycle counting and data sharing. Implemented automation and data tracking to improve testing efficiency.
+                    </p>
+
+                    <div class="flex flex-wrap gap-2">
+                        <span class="px-3 py-1 bg-zinc-900/50 border border-zinc-800 text-[10px] font-mono rounded-full uppercase">IoT</span>
+                        <span class="px-3 py-1 bg-zinc-900/50 border border-zinc-800 text-[10px] font-mono rounded-full uppercase">RFID</span>
+                        <span class="px-3 py-1 bg-zinc-900/50 border border-zinc-800 text-[10px] font-mono rounded-full uppercase">Automation</span>
+                    </div>
+
+                    <div class="grid grid-cols-2 gap-8 border-l border-blue-900/30 pl-6">
+                        <div>
+                            <p class="text-white text-xl font-light">Auto</p>
+                            <p class="text-[10px] font-mono uppercase text-zinc-600">Data Tracking</p>
+                        </div>
+                        <div>
+                            <p class="text-white text-xl font-light">Real-time</p>
+                            <p class="text-[10px] font-mono uppercase text-zinc-600">Monitoring</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 04: Taxi Demand -->
+                <div data-index="3" class="project-section space-y-8 pt-12 border-t border-zinc-900 group">
+                    <div class="flex justify-between items-start">
+                        <span class="font-mono text-[10px] tracking-[0.3em] text-blue-500/70">ML // 04</span>
+                        <span class="font-mono text-[10px] text-zinc-700">COORD_04</span>
+                    </div>
+                    
+                    <h2 class="text-3xl text-zinc-100 group-hover:text-blue-400 transition-colors cursor-default">
+                        Taxi Demand Forecasting Web App
+                    </h2>
+                    
+                    <p class="text-zinc-500 leading-relaxed max-w-lg">
+                        Developed a machine learning-based web application to forecast taxi demand using Streamlit. Performed EDA to identify key demand drivers and temporal patterns in ride requests.
+                    </p>
+
+                    <div class="flex flex-wrap gap-2">
+                        <span class="px-3 py-1 bg-zinc-900/50 border border-zinc-800 text-[10px] font-mono rounded-full uppercase">Python</span>
+                        <span class="px-3 py-1 bg-zinc-900/50 border border-zinc-800 text-[10px] font-mono rounded-full uppercase">Streamlit</span>
+                        <span class="px-3 py-1 bg-zinc-900/50 border border-zinc-800 text-[10px] font-mono rounded-full uppercase">EDA</span>
+                    </div>
+
+                    <div class="grid grid-cols-2 gap-8 border-l border-blue-900/30 pl-6">
+                        <div>
+                            <p class="text-white text-xl font-light">ML</p>
+                            <p class="text-[10px] font-mono uppercase text-zinc-600">Forecasting</p>
+                        </div>
+                        <div>
+                            <p class="text-white text-xl font-light">Web</p>
+                            <p class="text-[10px] font-mono uppercase text-zinc-600">Deployment</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 05: Rate My Professors -->
+                <div data-index="4" class="project-section space-y-8 pt-12 border-t border-zinc-900 group">
+                    <div class="flex justify-between items-start">
+                        <span class="font-mono text-[10px] tracking-[0.3em] text-blue-500/70">NLP // 05</span>
+                        <span class="font-mono text-[10px] text-zinc-700">COORD_05</span>
+                    </div>
+                    
+                    <h2 class="text-3xl text-zinc-100 group-hover:text-blue-400 transition-colors cursor-default">
+                        Rate My Professors Sentiment Analysis
+                    </h2>
+                    
+                    <p class="text-zinc-500 leading-relaxed max-w-lg">
+                        Developed an NLP pipeline in R using RSelenium and sLDA to analyze professor reviews, identifying key topics linked to student ratings. Managed data preprocessing, topic modeling, and visualization.
+                    </p>
+
+                    <div class="flex flex-wrap gap-2">
+                        <span class="px-3 py-1 bg-zinc-900/50 border border-zinc-800 text-[10px] font-mono rounded-full uppercase">R</span>
+                        <span class="px-3 py-1 bg-zinc-900/50 border border-zinc-800 text-[10px] font-mono rounded-full uppercase">NLP</span>
+                        <span class="px-3 py-1 bg-zinc-900/50 border border-zinc-800 text-[10px] font-mono rounded-full uppercase">Topic Modeling</span>
+                    </div>
+
+                    <div class="grid grid-cols-2 gap-8 border-l border-blue-900/30 pl-6">
+                        <div>
+                            <p class="text-white text-xl font-light">sLDA</p>
+                            <p class="text-[10px] font-mono uppercase text-zinc-600">Algorithm</p>
+                        </div>
+                        <div>
+                            <p class="text-white text-xl font-light">Data</p>
+                            <p class="text-[10px] font-mono uppercase text-zinc-600">Visualization</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 06: Heat Transfer -->
+                <div data-index="5" class="project-section space-y-8 pt-12 border-t border-zinc-900 group">
+                    <div class="flex justify-between items-start">
+                        <span class="font-mono text-[10px] tracking-[0.3em] text-blue-500/70">HPC // 06</span>
+                        <span class="font-mono text-[10px] text-zinc-700">COORD_06</span>
+                    </div>
+                    
+                    <h2 class="text-3xl text-zinc-100 group-hover:text-blue-400 transition-colors cursor-default">
+                        GPU Simulation of Heat Transfer
+                    </h2>
+                    
+                    <p class="text-zinc-500 leading-relaxed max-w-lg">
+                        Developed a CUDA-based GPU implementation to solve the 2D transient heat transfer equation efficiently. Demonstrated significant computational benefits through GPU acceleration and parallel computing.
+                    </p>
+
+                    <div class="flex flex-wrap gap-2">
+                        <span class="px-3 py-1 bg-zinc-900/50 border border-zinc-800 text-[10px] font-mono rounded-full uppercase">CUDA</span>
+                        <span class="px-3 py-1 bg-zinc-900/50 border border-zinc-800 text-[10px] font-mono rounded-full uppercase">C++</span>
+                        <span class="px-3 py-1 bg-zinc-900/50 border border-zinc-800 text-[10px] font-mono rounded-full uppercase">HPC</span>
+                    </div>
+
+                    <div class="grid grid-cols-2 gap-8 border-l border-blue-900/30 pl-6">
+                        <div>
+                            <p class="text-white text-xl font-light">GPU</p>
+                            <p class="text-[10px] font-mono uppercase text-zinc-600">Acceleration</p>
+                        </div>
+                        <div>
+                            <p class="text-white text-xl font-light">2D</p>
+                            <p class="text-[10px] font-mono uppercase text-zinc-600">Transient Solver</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 07: Road Segmentation -->
+                <div data-index="6" class="project-section space-y-8 pt-12 border-t border-zinc-900 group">
+                    <div class="flex justify-between items-start">
+                        <span class="font-mono text-[10px] tracking-[0.3em] text-blue-500/70">VISION // 07</span>
+                        <span class="font-mono text-[10px] text-zinc-700">COORD_07</span>
+                    </div>
+                    
+                    <h2 class="text-3xl text-zinc-100 group-hover:text-blue-400 transition-colors cursor-default">
+                        Road Segmentation for Autonomous Vehicles
+                    </h2>
+                    
+                    <p class="text-zinc-500 leading-relaxed max-w-lg">
+                        Implemented Fast-SCNN, SegFormer, YOLOv8, and SAM for semantic & instance segmentation. Trained on CityScapes dataset using PyTorch and OpenCV.
+                    </p>
+
+                    <div class="flex flex-wrap gap-2">
+                        <span class="px-3 py-1 bg-zinc-900/50 border border-zinc-800 text-[10px] font-mono rounded-full uppercase">PyTorch</span>
+                        <span class="px-3 py-1 bg-zinc-900/50 border border-zinc-800 text-[10px] font-mono rounded-full uppercase">OpenCV</span>
+                        <span class="px-3 py-1 bg-zinc-900/50 border border-zinc-800 text-[10px] font-mono rounded-full uppercase">YOLOv8</span>
+                    </div>
+
+                    <div class="grid grid-cols-2 gap-8 border-l border-blue-900/30 pl-6">
+                        <div>
+                            <p class="text-white text-xl font-light">Semantic</p>
+                            <p class="text-[10px] font-mono uppercase text-zinc-600">Segmentation</p>
+                        </div>
+                        <div>
+                            <p class="text-white text-xl font-light">CityScapes</p>
+                            <p class="text-[10px] font-mono uppercase text-zinc-600">Dataset</p>
+                        </div>
+                    </div>
+                </div>
+
+                 <!-- Project 08: AFM (Kept from original as it's a major research item) -->
+                <div data-index="7" class="project-section space-y-8 pt-12 border-t border-zinc-900 group">
+                    <div class="flex justify-between items-start">
+                        <span class="font-mono text-[10px] tracking-[0.3em] text-blue-500/70">RESEARCH // 08</span>
+                        <span class="font-mono text-[10px] text-zinc-700">COORD_08</span>
                     </div>
                     
                     <h2 class="text-3xl text-zinc-100 group-hover:text-blue-400 transition-colors cursor-default">
@@ -159,7 +458,6 @@
                         <span class="px-3 py-1 bg-zinc-900/50 border border-zinc-800 text-[10px] font-mono rounded-full uppercase">Python</span>
                         <span class="px-3 py-1 bg-zinc-900/50 border border-zinc-800 text-[10px] font-mono rounded-full uppercase">PyTorch</span>
                         <span class="px-3 py-1 bg-zinc-900/50 border border-zinc-800 text-[10px] font-mono rounded-full uppercase">LSTM</span>
-                        <span class="px-3 py-1 bg-zinc-900/50 border border-zinc-800 text-[10px] font-mono rounded-full uppercase">B-Splines</span>
                     </div>
 
                     <div class="grid grid-cols-2 gap-8 border-l border-blue-900/30 pl-6">
@@ -174,144 +472,42 @@
                     </div>
                 </div>
 
-                <!-- Project 02: Self Stabilizing Spoon -->
-                <div data-index="1" class="project-section space-y-8 pt-12 border-t border-zinc-900 group">
-                    <div class="flex justify-between items-start">
-                        <span class="font-mono text-[10px] tracking-[0.3em] text-blue-500/70">PROTOTYPE // 02</span>
-                        <span class="font-mono text-[10px] text-zinc-700">COORD_02</span>
-                    </div>
-                    
-                    <h2 class="text-3xl text-zinc-100 group-hover:text-blue-400 transition-colors cursor-default">
-                        Self-Stabilizing Spoon
-                    </h2>
-                    
-                    <p class="text-zinc-500 leading-relaxed max-w-lg">
-                        Implemented real-time motion control using MEMS gyro and servo feedback loops (PID). Tuned gains experimentally to identify plant dynamics using frequency-sweep data for vibration compensation.
-                    </p>
-
-                    <div class="flex flex-wrap gap-2">
-                        <span class="px-3 py-1 bg-zinc-900/50 border border-zinc-800 text-[10px] font-mono rounded-full uppercase">Arduino</span>
-                        <span class="px-3 py-1 bg-zinc-900/50 border border-zinc-800 text-[10px] font-mono rounded-full uppercase">C++</span>
-                        <span class="px-3 py-1 bg-zinc-900/50 border border-zinc-800 text-[10px] font-mono rounded-full uppercase">PID Control</span>
-                        <span class="px-3 py-1 bg-zinc-900/50 border border-zinc-800 text-[10px] font-mono rounded-full uppercase">MEMS</span>
-                    </div>
-
-                    <div class="grid grid-cols-2 gap-8 border-l border-blue-900/30 pl-6">
-                        <div>
-                            <p class="text-white text-xl font-light">Real-time</p>
-                            <p class="text-[10px] font-mono uppercase text-zinc-600">Latency</p>
-                        </div>
-                        <div>
-                            <p class="text-white text-xl font-light">Active</p>
-                            <p class="text-[10px] font-mono uppercase text-zinc-600">Vibration Damping</p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Project 03: SAE Aircraft -->
-                <div data-index="2" class="project-section space-y-8 pt-12 border-t border-zinc-900 group">
-                    <div class="flex justify-between items-start">
-                        <span class="font-mono text-[10px] tracking-[0.3em] text-blue-500/70">LEADERSHIP // 03</span>
-                        <span class="font-mono text-[10px] text-zinc-700">COORD_03</span>
-                    </div>
-                    
-                    <h2 class="text-3xl text-zinc-100 group-hover:text-blue-400 transition-colors cursor-default">
-                        SAE Micro Class Aircraft
-                    </h2>
-                    
-                    <p class="text-zinc-500 leading-relaxed max-w-lg">
-                        Captained a team of 18 members to design a high-lift micro aircraft. Optimized for short takeoff (&lt;9ft) under 450W power constraints with a custom fail-safe mechanism.
-                    </p>
-
-                    <div class="flex flex-wrap gap-2">
-                        <span class="px-3 py-1 bg-zinc-900/50 border border-zinc-800 text-[10px] font-mono rounded-full uppercase">SolidWorks</span>
-                        <span class="px-3 py-1 bg-zinc-900/50 border border-zinc-800 text-[10px] font-mono rounded-full uppercase">Aerodynamics</span>
-                        <span class="px-3 py-1 bg-zinc-900/50 border border-zinc-800 text-[10px] font-mono rounded-full uppercase">Composites</span>
-                    </div>
-
-                    <div class="grid grid-cols-2 gap-8 border-l border-blue-900/30 pl-6">
-                        <div>
-                            <p class="text-white text-xl font-light">6th</p>
-                            <p class="text-[10px] font-mono uppercase text-zinc-600">Global Rank</p>
-                        </div>
-                        <div>
-                            <p class="text-white text-xl font-light">&lt; 9 ft</p>
-                            <p class="text-[10px] font-mono uppercase text-zinc-600">Takeoff Dist</p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Project 04: Bike Taxi -->
-                <div data-index="3" class="project-section space-y-8 pt-12 border-t border-zinc-900 group">
-                    <div class="flex justify-between items-start">
-                        <span class="font-mono text-[10px] tracking-[0.3em] text-blue-500/70">ANALYTICS // 04</span>
-                        <span class="font-mono text-[10px] text-zinc-700">COORD_04</span>
-                    </div>
-                    
-                    <h2 class="text-3xl text-zinc-100 group-hover:text-blue-400 transition-colors cursor-default">
-                        Bike Taxi Forecasting
-                    </h2>
-                    
-                    <p class="text-zinc-500 leading-relaxed max-w-lg">
-                        Developed predictive machine learning models to analyze demand patterns for urban bike taxis. Utilized time-series forecasting to optimize fleet allocation and reduce wait times.
-                    </p>
-
-                    <div class="flex flex-wrap gap-2">
-                        <span class="px-3 py-1 bg-zinc-900/50 border border-zinc-800 text-[10px] font-mono rounded-full uppercase">Python</span>
-                        <span class="px-3 py-1 bg-zinc-900/50 border border-zinc-800 text-[10px] font-mono rounded-full uppercase">Scikit-Learn</span>
-                        <span class="px-3 py-1 bg-zinc-900/50 border border-zinc-800 text-[10px] font-mono rounded-full uppercase">Pandas</span>
-                    </div>
-
-                    <div class="grid grid-cols-2 gap-8 border-l border-blue-900/30 pl-6">
-                        <div>
-                            <p class="text-white text-xl font-light">High</p>
-                            <p class="text-[10px] font-mono uppercase text-zinc-600">Accuracy</p>
-                        </div>
-                        <div>
-                            <p class="text-white text-xl font-light">Optimized</p>
-                            <p class="text-[10px] font-mono uppercase text-zinc-600">Fleet Allocation</p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Project 05: RFID Rig -->
-                <div data-index="4" class="project-section space-y-8 pt-12 border-t border-zinc-900 group">
-                    <div class="flex justify-between items-start">
-                        <span class="font-mono text-[10px] tracking-[0.3em] text-blue-500/70">HARDWARE // 05</span>
-                        <span class="font-mono text-[10px] text-zinc-700">COORD_05</span>
-                    </div>
-                    
-                    <h2 class="text-3xl text-zinc-100 group-hover:text-blue-400 transition-colors cursor-default">
-                        RFID Endurance Rig
-                    </h2>
-                    
-                    <p class="text-zinc-500 leading-relaxed max-w-lg">
-                        Designed an automated electromechanical test rig for endurance cycling verification. Integrated RFID based counting and data logging for continuous lifecycle analysis.
-                    </p>
-
-                    <div class="flex flex-wrap gap-2">
-                        <span class="px-3 py-1 bg-zinc-900/50 border border-zinc-800 text-[10px] font-mono rounded-full uppercase">Embedded C</span>
-                        <span class="px-3 py-1 bg-zinc-900/50 border border-zinc-800 text-[10px] font-mono rounded-full uppercase">RFID</span>
-                        <span class="px-3 py-1 bg-zinc-900/50 border border-zinc-800 text-[10px] font-mono rounded-full uppercase">Automation</span>
-                    </div>
-
-                    <div class="grid grid-cols-2 gap-8 border-l border-blue-900/30 pl-6">
-                        <div>
-                            <p class="text-white text-xl font-light">Auto</p>
-                            <p class="text-[10px] font-mono uppercase text-zinc-600">Data Logging</p>
-                        </div>
-                        <div>
-                            <p class="text-white text-xl font-light">Robust</p>
-                            <p class="text-[10px] font-mono uppercase text-zinc-600">Cycle Testing</p>
-                        </div>
-                    </div>
-                </div>
-
             </div>
 
-            <!-- Footer info -->
-            <footer class="mt-48 py-12 border-t border-zinc-900 opacity-40 hover:opacity-100 transition-opacity">
-                <div class="flex justify-between font-mono text-[10px] uppercase tracking-tighter">
+            <!-- 3. Contact Section (New) -->
+            <footer id="contact" class="mt-48 py-24 border-t border-zinc-900">
+                <div class="flex items-center gap-4 mb-12">
+                    <h2 class="text-xs font-mono uppercase tracking-widest text-blue-500">03 // Contact</h2>
+                    <div class="h-[1px] bg-zinc-800 flex-grow"></div>
+                </div>
+                
+                <h2 class="text-4xl text-zinc-100 mb-8 font-light">Let's build something <span class="text-blue-500">robust</span>.</h2>
+                <p class="text-zinc-500 mb-12 max-w-md">
+                    Always open to discussing new opportunities in control systems, robotics, and machine learning applications.
+                </p>
+
+                <div class="grid grid-cols-1 gap-6 font-mono text-sm">
+                    <a href="mailto:srinanda@iastate.edu" class="flex items-center gap-4 hover:text-blue-500 transition-colors group">
+                        <div class="w-8 h-8 bg-zinc-900 border border-zinc-800 flex items-center justify-center group-hover:border-blue-500 transition-colors">
+                            <i data-lucide="mail" class="w-4 h-4"></i>
+                        </div>
+                        <span>srinanda@iastate.edu</span>
+                    </a>
+                    <a href="https://www.linkedin.com/in/sri-isu/" target="_blank" class="flex items-center gap-4 hover:text-blue-500 transition-colors group">
+                        <div class="w-8 h-8 bg-zinc-900 border border-zinc-800 flex items-center justify-center group-hover:border-blue-500 transition-colors">
+                            <i data-lucide="linkedin" class="w-4 h-4"></i>
+                        </div>
+                        <span>linkedin.com/in/sri-isu</span>
+                    </a>
+                     <a href="https://github.com" target="_blank" class="flex items-center gap-4 hover:text-blue-500 transition-colors group">
+                        <div class="w-8 h-8 bg-zinc-900 border border-zinc-800 flex items-center justify-center group-hover:border-blue-500 transition-colors">
+                            <i data-lucide="github" class="w-4 h-4"></i>
+                        </div>
+                        <span>github.com/srinanda</span>
+                    </a>
+                </div>
+
+                <div class="mt-24 pt-8 border-t border-zinc-900/50 flex justify-between font-mono text-[10px] uppercase tracking-tighter text-zinc-600">
                     <span>Built 2026 // HTML5 & Tailwind</span>
                     <span>Ames, Iowa</span>
                 </div>
@@ -358,20 +554,23 @@
                         </div>
                     </div>
                     
-                    <!-- Project 0 Visual: AFM/Control -->
+                    <!-- Project 0 Visual: SAE Aircraft -->
                     <div id="visual-0" class="visual-container">
-                        <div class="relative w-80 h-80 border border-zinc-800 rounded-full flex items-center justify-center">
-                            <div class="absolute inset-0 border border-blue-500/20 rounded-full animate-[spin_4s_linear_infinite]"></div>
-                            <div class="absolute inset-8 border border-blue-500/10 rounded-full animate-spin-reverse"></div>
+                        <div class="w-full max-w-md relative h-48 overflow-hidden border-b border-zinc-800">
+                            <!-- Wind Tunnel Lines -->
+                            <div class="absolute top-1/4 left-[-100%] w-[200%] h-[1px] bg-zinc-700 animate-[slide_2s_linear_infinite]" style="animation: scan 1s linear infinite; transform: rotate(90deg);"></div>
+                            <div class="absolute top-2/4 left-[-100%] w-[200%] h-[1px] bg-blue-900/50 animate-[slide_3s_linear_infinite]" style="animation: scan 1.5s linear infinite; transform: rotate(90deg);"></div>
+                            <div class="absolute top-3/4 left-[-100%] w-[200%] h-[1px] bg-zinc-700 animate-[slide_2.5s_linear_infinite]" style="animation: scan 2s linear infinite; transform: rotate(90deg);"></div>
                             
-                            <i data-lucide="microscope" class="w-16 h-16 text-blue-500 opacity-50 stroke-[1]"></i>
-                            
-                            <div class="absolute -top-6 left-1/2 -translate-x-1/2 bg-[#0c0c0c] px-2 text-[9px] font-mono text-zinc-500 text-center">
-                                NONLINEAR_HYSTERESIS<br/>COMPENSATION
+                            <!-- Plane Icon -->
+                            <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
+                                <i data-lucide="plane" class="w-16 h-16 text-zinc-200 -rotate-45"></i>
                             </div>
+
+                            <!-- Vector Force Arrows -->
+                            <div class="absolute top-1/3 left-1/2 w-[1px] h-8 bg-blue-500"></div>
+                            <span class="absolute top-[28%] left-1/2 text-[8px] font-mono text-blue-500">LIFT</span>
                         </div>
-                        <div class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-1 bg-gradient-to-r from-transparent via-blue-500/20 to-transparent rotate-45"></div>
-                        <div class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-1 bg-gradient-to-r from-transparent via-blue-500/20 to-transparent -rotate-45"></div>
                     </div>
 
                     <!-- Project 1 Visual: Self Stabilizing Spoon -->
@@ -393,46 +592,9 @@
                         </div>
                     </div>
 
-                    <!-- Project 2 Visual: SAE Aircraft -->
+                    <!-- Project 2 Visual: RFID Rig -->
                     <div id="visual-2" class="visual-container">
-                        <div class="w-full max-w-md relative h-48 overflow-hidden border-b border-zinc-800">
-                            <!-- Wind Tunnel Lines -->
-                            <div class="absolute top-1/4 left-[-100%] w-[200%] h-[1px] bg-zinc-700 animate-[slide_2s_linear_infinite]" style="animation: scan 1s linear infinite; transform: rotate(90deg);"></div>
-                            <div class="absolute top-2/4 left-[-100%] w-[200%] h-[1px] bg-blue-900/50 animate-[slide_3s_linear_infinite]" style="animation: scan 1.5s linear infinite; transform: rotate(90deg);"></div>
-                            <div class="absolute top-3/4 left-[-100%] w-[200%] h-[1px] bg-zinc-700 animate-[slide_2.5s_linear_infinite]" style="animation: scan 2s linear infinite; transform: rotate(90deg);"></div>
-                            
-                            <!-- Plane Icon -->
-                            <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
-                                <i data-lucide="plane" class="w-16 h-16 text-zinc-200 -rotate-45"></i>
-                            </div>
-
-                            <!-- Vector Force Arrows -->
-                            <div class="absolute top-1/3 left-1/2 w-[1px] h-8 bg-blue-500"></div>
-                            <span class="absolute top-[28%] left-1/2 text-[8px] font-mono text-blue-500">LIFT</span>
-                        </div>
-                    </div>
-
-                    <!-- Project 3 Visual: Taxi Forecasting -->
-                    <div id="visual-3" class="visual-container">
-                        <div class="w-64 h-40 border-l border-b border-zinc-700 relative p-4 flex items-end gap-2">
-                             <!-- Bar Chart Animation -->
-                             <div class="w-4 bg-zinc-800 hover:bg-blue-600 transition-all h-[30%]"></div>
-                             <div class="w-4 bg-zinc-800 hover:bg-blue-600 transition-all h-[50%]"></div>
-                             <div class="w-4 bg-zinc-800 hover:bg-blue-600 transition-all h-[40%]"></div>
-                             <div class="w-4 bg-zinc-800 hover:bg-blue-600 transition-all h-[80%]"></div>
-                             <div class="w-4 bg-blue-600 h-[95%] shadow-[0_0_10px_rgba(37,99,235,0.5)]"></div>
-                             <div class="w-4 bg-zinc-800/50 h-[70%] border border-dashed border-zinc-600"></div>
-                             
-                             <div class="absolute top-4 right-4 text-right">
-                                 <p class="font-mono text-[9px] text-zinc-500">DEMAND_FORECAST</p>
-                                 <p class="font-mono text-xl text-white">+18%</p>
-                             </div>
-                        </div>
-                    </div>
-
-                    <!-- Project 4 Visual: RFID Rig -->
-                    <div id="visual-4" class="visual-container">
-                        <div class="relative w-64 h-64 flex items-center justify-center">
+                         <div class="relative w-64 h-64 flex items-center justify-center">
                              <!-- RFID Tag -->
                              <div class="w-32 h-20 border border-zinc-600 rounded bg-zinc-900 flex items-center justify-center relative z-10">
                                  <div class="w-24 h-12 border border-zinc-800 flex items-center gap-2 px-2">
@@ -449,6 +611,88 @@
                                  CYCLES: 104,242
                              </div>
                         </div>
+                    </div>
+
+                    <!-- Project 3 Visual: Taxi Demand -->
+                    <div id="visual-3" class="visual-container">
+                         <div class="w-64 h-40 border-l border-b border-zinc-700 relative p-4 flex items-end gap-2">
+                             <!-- Bar Chart Animation -->
+                             <div class="w-4 bg-zinc-800 hover:bg-blue-600 transition-all h-[30%]"></div>
+                             <div class="w-4 bg-zinc-800 hover:bg-blue-600 transition-all h-[50%]"></div>
+                             <div class="w-4 bg-zinc-800 hover:bg-blue-600 transition-all h-[40%]"></div>
+                             <div class="w-4 bg-zinc-800 hover:bg-blue-600 transition-all h-[80%]"></div>
+                             <div class="w-4 bg-blue-600 h-[95%] shadow-[0_0_10px_rgba(37,99,235,0.5)]"></div>
+                             <div class="w-4 bg-zinc-800/50 h-[70%] border border-dashed border-zinc-600"></div>
+                             
+                             <div class="absolute top-4 right-4 text-right">
+                                 <p class="font-mono text-[9px] text-zinc-500">DEMAND_FORECAST</p>
+                                 <p class="font-mono text-xl text-white">+18%</p>
+                             </div>
+                        </div>
+                    </div>
+
+                    <!-- Project 4 Visual: NLP -->
+                    <div id="visual-4" class="visual-container">
+                        <div class="relative w-72 h-48 border border-zinc-800 rounded bg-zinc-900/50 p-4 font-mono text-[10px] overflow-hidden">
+                            <div class="text-green-500 mb-2">>> analyzing_sentiment...</div>
+                            <div class="space-y-1 text-zinc-600">
+                                <div>[REVIEWS_LOADED]: 452</div>
+                                <div>[TOPIC_01]: "Lecture Quality" (0.84)</div>
+                                <div>[TOPIC_02]: "Grading Strictness" (0.72)</div>
+                                <div>[SENTIMENT]: POSITIVE</div>
+                            </div>
+                            <div class="absolute bottom-0 left-0 w-full h-1 bg-green-500 animate-pulse"></div>
+                        </div>
+                    </div>
+
+                    <!-- Project 5 Visual: Heat Transfer -->
+                     <div id="visual-5" class="visual-container">
+                        <div class="relative w-64 h-64 bg-zinc-900 border border-zinc-800 overflow-hidden rounded">
+                            <!-- Heat Map Gradient Animation -->
+                            <div class="absolute inset-0 bg-gradient-to-tr from-blue-900 to-red-900 opacity-50 animate-pulse"></div>
+                            <div class="absolute inset-0 grid grid-cols-10 grid-rows-10 gap-px opacity-20">
+                                <!-- Grid cells -->
+                                <div class="bg-zinc-500"></div> <div class="bg-zinc-500"></div> <div class="bg-zinc-500"></div>
+                                <!-- ... simplified grid ... -->
+                            </div>
+                            <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-center">
+                                <p class="font-mono text-2xl text-white font-bold">CUDA</p>
+                                <p class="font-mono text-[9px] text-zinc-400">GPU_ACCELERATED</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Project 6 Visual: Road Segmentation -->
+                    <div id="visual-6" class="visual-container">
+                        <div class="relative w-64 h-48 border border-zinc-800 bg-zinc-900 overflow-hidden flex flex-col items-center justify-end pb-4">
+                            <!-- Road Perspective -->
+                            <div class="w-16 h-full bg-zinc-800 skew-x-[20deg] absolute bottom-0"></div>
+                            <div class="w-16 h-full bg-zinc-800 -skew-x-[20deg] absolute bottom-0"></div>
+                            
+                            <!-- Bounding Boxes -->
+                            <div class="absolute top-10 left-10 w-8 h-8 border border-green-500 animate-pulse"></div>
+                            <div class="absolute top-20 right-20 w-12 h-10 border border-red-500 animate-pulse" style="animation-delay: 0.5s"></div>
+                            
+                            <div class="z-10 bg-black/80 px-2 py-1 rounded text-[9px] font-mono text-green-400 border border-green-900">
+                                SEGMENTATION_MASK: ACTIVE
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Project 7 Visual: AFM/Control -->
+                    <div id="visual-7" class="visual-container">
+                        <div class="relative w-80 h-80 border border-zinc-800 rounded-full flex items-center justify-center">
+                            <div class="absolute inset-0 border border-blue-500/20 rounded-full animate-[spin_4s_linear_infinite]"></div>
+                            <div class="absolute inset-8 border border-blue-500/10 rounded-full animate-spin-reverse"></div>
+                            
+                            <i data-lucide="microscope" class="w-16 h-16 text-blue-500 opacity-50 stroke-[1]"></i>
+                            
+                            <div class="absolute -top-6 left-1/2 -translate-x-1/2 bg-[#0c0c0c] px-2 text-[9px] font-mono text-zinc-500 text-center">
+                                NONLINEAR_HYSTERESIS<br/>COMPENSATION
+                            </div>
+                        </div>
+                        <div class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-1 bg-gradient-to-r from-transparent via-blue-500/20 to-transparent rotate-45"></div>
+                        <div class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-1 bg-gradient-to-r from-transparent via-blue-500/20 to-transparent -rotate-45"></div>
                     </div>
 
                 </div>
@@ -481,11 +725,14 @@
 
         // Project Titles for the Status Bar
         const projectTitles = [
-            "AFM_NANOPOSITION_CONTROL",
-            "SELF_STABILIZING_SPOON",
             "SAE_MICRO_AIRCRAFT",
+            "SELF_STABILIZING_SPOON",
+            "RFID_ENDURANCE_RIG",
             "TAXI_DEMAND_FORECASTING",
-            "RFID_ENDURANCE_RIG"
+            "RATE_MY_PROF_NLP",
+            "GPU_HEAT_TRANSFER",
+            "ROAD_SEGMENTATION",
+            "AFM_NANOPOSITION_CONTROL"
         ];
 
         // Intersection Observer Logic
