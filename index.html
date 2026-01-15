@@ -116,6 +116,14 @@
             margin-bottom: 1rem;
         }
         
+        /* Filter Button Styling */
+        .filter-btn {
+            @apply px-3 py-1 text-[10px] font-mono border border-zinc-800 rounded-full transition-all cursor-pointer hover:border-blue-500 hover:text-blue-400;
+        }
+        .filter-btn.active {
+            @apply bg-zinc-800 text-blue-400 border-blue-500;
+        }
+        
         /* Disable scrollbar for cleaner look if needed, but allow scrolling */
         /* .custom-scrollbar::-webkit-scrollbar { display: none; } */
     </style>
@@ -309,22 +317,32 @@
 
         <!-- FULL WIDTH PROJECTS SECTION -->
         <div id="projects" class="w-full p-6 md:p-16 lg:p-24 bg-[#0a0a0a] border-t border-zinc-900 z-40 relative">
-             <div class="flex items-center gap-4 mb-12">
-                <h2 class="text-xs font-mono uppercase tracking-widest text-blue-500">02 // Projects</h2>
-                <div class="h-[1px] bg-zinc-800 flex-grow"></div>
+             <div class="flex flex-col md:flex-row items-start md:items-center gap-4 md:gap-8 mb-12">
+                <div class="flex items-center gap-4 flex-grow-0">
+                    <h2 class="text-xs font-mono uppercase tracking-widest text-blue-500">02 // Projects</h2>
+                    <div class="h-[1px] bg-zinc-800 w-12 hidden md:block"></div>
+                </div>
+                
+                <!-- Filter Controls -->
+                <div class="flex flex-wrap gap-2" id="project-filters">
+                    <button class="filter-btn active" data-filter="all">All</button>
+                    <button class="filter-btn" data-filter="mech">Mechanical & Controls</button>
+                    <button class="filter-btn" data-filter="ml-gpu">ML & GPU Computing</button>
+                    <button class="filter-btn" data-filter="ml-data">ML & Data Science</button>
+                </div>
             </div>
             
-            <!-- Grid Layout: 4 on top, 3 on bottom -->
-            <div class="flex flex-col gap-6">
-                <!-- Row 1: 4 Projects -->
-                <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6">
+            <!-- Grid Layout -->
+            <div class="flex flex-col gap-6" id="projects-grid">
+                <!-- Row 1 Container -->
+                <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6 w-full" id="row-1">
                     
-                    <!-- Project 01: SAE -->
-                    <div class="project-card border border-zinc-800 p-0 rounded-lg cursor-default group hover:bg-zinc-900/50 transition-all overflow-hidden bg-zinc-900/20">
+                    <!-- Project 01: SAE (Mech) -->
+                    <div class="project-card border border-zinc-800 p-0 rounded-lg cursor-default group hover:bg-zinc-900/50 transition-all overflow-hidden bg-zinc-900/20" data-category="mech">
                         <div class="mini-render-window">
                             <!-- Visual: Image for SAE - UPDATED centering and object-contain -->
                             <div class="w-full h-full flex items-center justify-center bg-black">
-                                <img src="redrocket.jpg" alt="SAE Micro Class Aircraft" class="w-full h-full object-contain opacity-80 group-hover:opacity-100 transition-opacity">
+                                <img src="Redrocket.jpg" alt="SAE Micro Class Aircraft" class="w-full h-full object-contain opacity-80 group-hover:opacity-100 transition-opacity">
                             </div>
                         </div>
                         <div class="p-6 pt-0 flex flex-col flex-grow">
@@ -339,8 +357,8 @@
                         </div>
                     </div>
 
-                    <!-- Project 02: Spoon -->
-                    <div class="project-card border border-zinc-800 p-0 rounded-lg cursor-default group hover:bg-zinc-900/50 transition-all overflow-hidden bg-zinc-900/20">
+                    <!-- Project 02: Spoon (Mech) -->
+                    <div class="project-card border border-zinc-800 p-0 rounded-lg cursor-default group hover:bg-zinc-900/50 transition-all overflow-hidden bg-zinc-900/20" data-category="mech">
                         <div class="mini-render-window">
                             <!-- Visual: Gyro -->
                             <div class="w-16 h-16 border border-zinc-600 rounded-full flex items-center justify-center animate-wobble">
@@ -359,8 +377,8 @@
                         </div>
                     </div>
 
-                    <!-- Project 03: RFID -->
-                    <div class="project-card border border-zinc-800 p-0 rounded-lg cursor-default group hover:bg-zinc-900/50 transition-all overflow-hidden bg-zinc-900/20">
+                    <!-- Project 03: RFID (Mech) -->
+                    <div class="project-card border border-zinc-800 p-0 rounded-lg cursor-default group hover:bg-zinc-900/50 transition-all overflow-hidden bg-zinc-900/20" data-category="mech">
                         <div class="mini-render-window">
                             <!-- Visual: Signal -->
                             <div class="absolute w-16 h-16 border border-blue-500/30 rounded-full animate-signal"></div>
@@ -380,8 +398,8 @@
                         </div>
                     </div>
 
-                    <!-- Project 04: Taxi -->
-                    <div class="project-card border border-zinc-800 p-0 rounded-lg cursor-default group hover:bg-zinc-900/50 transition-all overflow-hidden bg-zinc-900/20">
+                    <!-- Project 04: Taxi (ML & Data) -->
+                    <div class="project-card border border-zinc-800 p-0 rounded-lg cursor-default group hover:bg-zinc-900/50 transition-all overflow-hidden bg-zinc-900/20" data-category="ml-data">
                         <div class="mini-render-window flex items-end gap-1 px-8 pb-8">
                             <!-- Visual: Bar Chart -->
                             <div class="w-2 bg-zinc-700 h-[40%]"></div>
@@ -402,12 +420,12 @@
                     </div>
                 </div>
 
-                <!-- Row 2: 3 Projects - CENTERED AND SAME WIDTH -->
-                <div class="flex justify-center">
-                    <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6 w-full xl:w-3/4">
+                <!-- Row 2 Container - CENTERED AND SAME WIDTH -->
+                <div class="flex justify-center w-full" id="row-2-container">
+                    <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6 w-full xl:w-3/4" id="row-2">
                         
-                        <!-- Project 05: NLP -->
-                        <div class="project-card border border-zinc-800 p-0 rounded-lg cursor-default group hover:bg-zinc-900/50 transition-all overflow-hidden bg-zinc-900/20">
+                        <!-- Project 05: NLP (ML & Data) -->
+                        <div class="project-card border border-zinc-800 p-0 rounded-lg cursor-default group hover:bg-zinc-900/50 transition-all overflow-hidden bg-zinc-900/20" data-category="ml-data">
                             <div class="mini-render-window p-4 font-mono text-[8px] flex flex-col justify-center">
                                 <div class="text-green-500 mb-1">>> analyzing...</div>
                                 <div class="text-zinc-500">[SENTIMENT]: POSITIVE</div>
@@ -425,8 +443,8 @@
                             </div>
                         </div>
 
-                        <!-- Project 06: GPU Heat -->
-                        <div class="project-card border border-zinc-800 p-0 rounded-lg cursor-default group hover:bg-zinc-900/50 transition-all overflow-hidden bg-zinc-900/20">
+                        <!-- Project 06: GPU Heat (ML & GPU) -->
+                        <div class="project-card border border-zinc-800 p-0 rounded-lg cursor-default group hover:bg-zinc-900/50 transition-all overflow-hidden bg-zinc-900/20" data-category="ml-gpu">
                             <div class="mini-render-window">
                                 <!-- Visual: Heat Map GIF - UPDATED -->
                                 <video autoplay loop muted playsinline class="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity">
@@ -447,8 +465,8 @@
                             </div>
                         </div>
 
-                        <!-- Project 07: Vision -->
-                        <div class="project-card border border-zinc-800 p-0 rounded-lg cursor-default group hover:bg-zinc-900/50 transition-all overflow-hidden bg-zinc-900/20">
+                        <!-- Project 07: Vision (ML & GPU) -->
+                        <div class="project-card border border-zinc-800 p-0 rounded-lg cursor-default group hover:bg-zinc-900/50 transition-all overflow-hidden bg-zinc-900/20" data-category="ml-gpu">
                             <div class="mini-render-window relative">
                                 <!-- Visual: Segmentation -->
                                 <div class="absolute bottom-0 w-full h-1/2 bg-zinc-800 skew-x-12 opacity-50"></div>
@@ -517,33 +535,19 @@
         // Initialize Lucide Icons
         lucide.createIcons();
 
-        // Project Titles for the Status Bar
-        const projectTitles = [
-            "SAE_MICRO_AIRCRAFT",
-            "SELF_STABILIZING_SPOON",
-            "RFID_ENDURANCE_RIG",
-            "TAXI_DEMAND_FORECASTING",
-            "RATE_MY_PROF_NLP",
-            "GPU_HEAT_TRANSFER",
-            "ROAD_SEGMENTATION"
-        ];
-
-        // Logic for handling scroll spy
         document.addEventListener('DOMContentLoaded', () => {
+            // --- SCROLL SPY LOGIC ---
             const projectRefElement = document.getElementById('project-ref');
             const heroSection = document.getElementById('hero-section');
             const experienceSection = document.getElementById('experience');
             
-            // Function to update visual based on index
             function updateActiveVisual(index) {
-                // Update Reference Text
                 if (index === 'hero') {
                     projectRefElement.innerText = `REF: PORTFOLIO_HOME`;
                 } else if (index === 'experience') {
                     projectRefElement.innerText = `REF: EXPERIENCE_LOG`;
                 }
 
-                // Update Visuals
                 document.querySelectorAll('.visual-container').forEach((el) => {
                     el.classList.remove('active');
                 });
@@ -555,7 +559,6 @@
                 }
             }
 
-            // 1. Intersection Observer for Scroll (Primary Logic for Hero vs Experience)
             const observer = new IntersectionObserver((entries) => {
                 entries.forEach((entry) => {
                     if (entry.isIntersecting) {
@@ -570,6 +573,52 @@
 
             if(heroSection) observer.observe(heroSection);
             if(experienceSection) observer.observe(experienceSection);
+
+            // --- FILTER LOGIC ---
+            const filterBtns = document.querySelectorAll('.filter-btn');
+            const allProjects = document.querySelectorAll('.project-card');
+            const row1 = document.getElementById('row-1');
+            const row2 = document.getElementById('row-2');
+            const row2Container = document.getElementById('row-2-container');
+
+            filterBtns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    // Remove active class from all buttons
+                    filterBtns.forEach(b => b.classList.remove('active'));
+                    // Add active class to clicked button
+                    btn.classList.add('active');
+
+                    const filterValue = btn.getAttribute('data-filter');
+
+                    // Reset Grid Layout for filtering (flatten structure momentarily)
+                    // We need to move all cards to a single container or handle visibility
+                    // To keep it simple, we will hide/show. For the specific layout requirement (4 top, 3 bottom),
+                    // filtering breaks that specific structure naturally. 
+                    // Best approach: Hide cards, and let remaining cards flow in a standard grid if filtered.
+                    
+                    if (filterValue === 'all') {
+                        // Restore original specific layout logic if needed, or just show all
+                        allProjects.forEach(card => card.style.display = 'flex');
+                        
+                        // Ensure layout structure for 'All' view is preserved (cards are physically in different divs in HTML)
+                        // The HTML structure separates them into row-1 and row-2. 
+                        // Since we aren't moving DOM elements, just showing/hiding is enough.
+                        // However, if we filter, we might want them to regroup.
+                        
+                        // For simplicity in this static file without heavy JS DOM manipulation:
+                        // We will just hide unmatched cards. The grid gaps might look odd if 'row 1' has hidden items.
+                        // But CSS Grid handles hidden items well (they take 0 space).
+                    } else {
+                        allProjects.forEach(card => {
+                            if (card.getAttribute('data-category') === filterValue) {
+                                card.style.display = 'flex';
+                            } else {
+                                card.style.display = 'none';
+                            }
+                        });
+                    }
+                });
+            });
         });
     </script>
 </body>
