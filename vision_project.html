@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Road Segmentation & Perception | Srinandana Y Sastry</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        .font-mono { font-family: 'JetBrains Mono', monospace; }
+        
+        /* Smooth Scrolling */
+        html { scroll-behavior: smooth; }
+
+        /* Hide scrollbar for gallery but allow scroll */
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;  /* IE and Edge */
+            scrollbar-width: none;  /* Firefox */
+        }
+
+        /* Hero Animation: Scanning Plane */
+        @keyframes perspective-scan {
+            0% { transform: perspective(500px) rotateX(45deg) translateY(0); opacity: 0; }
+            20% { opacity: 1; }
+            80% { opacity: 1; }
+            100% { transform: perspective(500px) rotateX(45deg) translateY(100px); opacity: 0; }
+        }
+        .animate-scan-plane {
+            animation: perspective-scan 3s linear infinite;
+        }
+        
+        /* Box Pulse */
+        @keyframes box-pulse {
+            0% { box-shadow: 0 0 0 0 rgba(168, 85, 247, 0.4); }
+            70% { box-shadow: 0 0 0 10px rgba(168, 85, 247, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(168, 85, 247, 0); }
+        }
+    </style>
+</head>
+<body class="bg-[#0a0a0a] text-zinc-400 selection:bg-purple-500/30 min-h-screen flex flex-col relative">
+
+    <!-- 1. HERO IMAGE OVERLAY SECTION -->
+    <div id="hero-intro" class="h-screen w-full relative overflow-hidden flex items-center justify-center bg-black z-50">
+        
+        <!-- Abstract Background: Perception Grid -->
+        <div class="absolute inset-0 w-full h-full bg-[#050505]">
+            <!-- Perspective Grid -->
+            <div class="absolute inset-x-0 bottom-0 h-1/2 opacity-20" 
+                 style="background-image: linear-gradient(#a855f7 1px, transparent 1px), linear-gradient(90deg, #a855f7 1px, transparent 1px); background-size: 40px 40px; transform: perspective(500px) rotateX(60deg); transform-origin: bottom;">
+            </div>
+            
+            <!-- Scanning Line -->
+            <div class="absolute w-full h-1 bg-purple-500/50 shadow-[0_0_30px_#a855f7] top-1/2 animate-pulse"></div>
+        </div>
+
+        <!-- Overlay Gradient -->
+        <div class="absolute inset-0 bg-gradient-to-t from-[#0a0a0a] via-transparent to-black/60 pointer-events-none"></div>
+        
+        <!-- CENTER CONTENT CONTAINER -->
+        <div class="relative z-10 flex flex-col items-center justify-center space-y-12 px-4 pointer-events-none mb-20">
+            
+            <!-- A. Title Text -->
+            <div class="text-center space-y-6">
+                <h1 class="text-4xl md:text-6xl font-black uppercase tracking-tighter text-white">
+                    Road <span class="text-purple-500">Segmentation</span>
+                </h1>
+                <p class="font-mono text-sm md:text-base text-zinc-300 uppercase tracking-widest">
+                    Deep Learning for Autonomous Perception
+                </p>
+            </div>
+
+            <!-- B. Hero Visual: Segmentation Icon -->
+            <div class="flex items-center gap-8 opacity-90">
+                <!-- Frame -->
+                <div class="w-20 h-14 border-2 border-purple-500 rounded bg-zinc-900 relative overflow-hidden shadow-[0_0_20px_#a855f7]">
+                    <!-- Simulated Road Mask -->
+                    <div class="absolute bottom-0 left-0 w-full h-1/2 bg-purple-500/40 clip-path-trapezoid" style="clip-path: polygon(20% 0, 80% 0, 100% 100%, 0% 100%);"></div>
+                    <!-- Object -->
+                    <div class="absolute bottom-2 right-4 w-4 h-3 bg-white/80 rounded-sm"></div>
+                </div>
+                
+                <!-- AI Brain -->
+                <div class="w-12 h-12 border border-zinc-700 rounded-full flex items-center justify-center bg-black">
+                    <i data-lucide="brain" class="text-purple-500 w-6 h-6 animate-pulse"></i>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Scroll Indicator -->
+        <div class="absolute bottom-12 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 animate-bounce cursor-pointer group pointer-events-auto" onclick="document.getElementById('main-content').scrollIntoView()">
+            <span class="text-[10px] font-mono uppercase tracking-widest text-zinc-500 group-hover:text-purple-400 transition-colors">Scroll to Explore</span>
+            <i data-lucide="chevron-down" class="w-6 h-6 text-zinc-400 group-hover:text-purple-400 transition-colors"></i>
+        </div>
+    </div>
+
+    <!-- 2. NAVIGATION (Sticky) -->
+    <nav class="sticky top-0 bg-[#0a0a0a]/90 backdrop-blur-sm border-b border-zinc-900 z-40 px-6 py-4 md:px-12 lg:px-24 flex justify-between items-center">
+        <a href="index.html" class="flex items-center gap-2 group hover:opacity-80 transition-opacity">
+            <div class="w-8 h-8 bg-zinc-800 rounded-sm flex items-center justify-center text-white font-bold text-xs tracking-tighter group-hover:bg-purple-600 transition-colors">
+                <i data-lucide="arrow-left" class="w-4 h-4"></i>
+            </div>
+            <div class="leading-none">
+                <p class="text-white text-xs font-semibold uppercase tracking-widest">Back to Portfolio</p>
+            </div>
+        </a>
+        <div class="text-[10px] font-mono text-zinc-600 uppercase tracking-widest hidden md:block">
+            PROJECT_ID: DL_PERCEPTION_07
+        </div>
+    </nav>
+
+    <!-- 3. MAIN CONTENT (Split View) -->
+    <main id="main-content" class="flex-grow w-full max-w-[1920px] mx-auto">
+        <div class="flex flex-col md:flex-row min-h-screen">
+            
+            <!-- LEFT COLUMN: Text Content -->
+            <div class="w-full md:w-1/2 p-8 md:p-16 lg:p-24 space-y-16 bg-[#0a0a0a]">
+                
+                <!-- Project Objective -->
+                <section class="space-y-4">
+                    <h3 class="text-xl text-zinc-100 flex items-center gap-3 font-medium border-b border-zinc-800 pb-4">
+                        Project Objective
+                    </h3>
+                    <p class="text-zinc-400 leading-relaxed text-base md:text-lg">
+                        The objective was to compare vision-based perception modules for autonomous vehicles, specifically focusing on accurately segmenting roads, lanes, and surrounding objects. The goal was to evaluate real-time semantic and instance segmentation models for deployment in cyber-physical systems (CPS) and resource-constrained environments.
+                    </p>
+                </section>
+
+                <!-- Technical Overview -->
+                <section class="space-y-4">
+                    <h3 class="text-xl text-zinc-100 flex items-center gap-3 font-medium border-b border-zinc-800 pb-4">
+                        Technical Overview
+                    </h3>
+                    <p class="text-zinc-400 leading-relaxed text-base md:text-lg mb-4">
+                        This project focuses on road scene understanding using deep learning–based image segmentation. Multiple state-of-the-art architectures were implemented: <span class="text-purple-400 font-mono">Fast-SCNN</span> for speed, <span class="text-purple-400 font-mono">SegFormer</span> for accuracy, and <span class="text-purple-400 font-mono">YOLOv8</span> for instance detection.
+                    </p>
+                    <p class="text-zinc-400 leading-relaxed text-base md:text-lg">
+                        Trained on the <span class="text-white">CityScapes</span> dataset (5,000+ urban images), the system balances segmentation accuracy with computational efficiency, aiming for real-time feasibility in autonomous driving.
+                    </p>
+                </section>
+
+                 <!-- Models Implemented -->
+                 <section class="space-y-6">
+                    <h3 class="text-xl text-zinc-100 flex items-center gap-3 font-medium border-b border-zinc-800 pb-4">
+                        Models Implemented
+                    </h3>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div class="p-4 border border-zinc-800 rounded bg-zinc-900/50">
+                            <h4 class="text-purple-400 font-bold text-sm mb-2">Fast-SCNN</h4>
+                            <p class="text-xs text-zinc-500">Lightweight CNN optimized for embedded/edge devices. Fast inference.</p>
+                        </div>
+                        <div class="p-4 border border-zinc-800 rounded bg-zinc-900/50">
+                            <h4 class="text-purple-400 font-bold text-sm mb-2">SegFormer</h4>
+                            <p class="text-xs text-zinc-500">Transformer-based. Captures long-range context for high-quality masks.</p>
+                        </div>
+                        <div class="p-4 border border-zinc-800 rounded bg-zinc-900/50">
+                            <h4 class="text-purple-400 font-bold text-sm mb-2">YOLOv8</h4>
+                            <p class="text-xs text-zinc-500">Real-time instance segmentation for dynamic object tracking (cars/pedestrians).</p>
+                        </div>
+                        <div class="p-4 border border-zinc-800 rounded bg-zinc-900/50">
+                            <h4 class="text-purple-400 font-bold text-sm mb-2">SAM</h4>
+                            <p class="text-xs text-zinc-500">Segment Anything Model. Zero-shot flexibility for novel objects.</p>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Key Results -->
+                <section class="space-y-6">
+                    <h3 class="text-xl text-zinc-100 flex items-center gap-3 font-medium border-b border-zinc-800 pb-4">
+                        Key Results
+                    </h3>
+                    <ul class="space-y-6">
+                        <li class="flex gap-4 items-start">
+                            <div class="mt-1.5 w-1.5 h-1.5 rounded-full bg-purple-500 shrink-0"></div>
+                            <p class="text-zinc-400 leading-relaxed">
+                                <strong class="text-zinc-200">Fast-SCNN:</strong> Demonstrated strong potential for real-time deployment on embedded platforms.
+                            </p>
+                        </li>
+                        <li class="flex gap-4 items-start">
+                            <div class="mt-1.5 w-1.5 h-1.5 rounded-full bg-purple-500 shrink-0"></div>
+                            <p class="text-zinc-400 leading-relaxed">
+                                <strong class="text-zinc-200">SegFormer:</strong> Provided superior semantic segmentation quality for continuous classes like roads.
+                            </p>
+                        </li>
+                        <li class="flex gap-4 items-start">
+                            <div class="mt-1.5 w-1.5 h-1.5 rounded-full bg-purple-500 shrink-0"></div>
+                            <p class="text-zinc-400 leading-relaxed">
+                                <strong class="text-zinc-200">YOLOv8:</strong> Excelled at detecting dynamic objects, critical for obstacle avoidance.
+                            </p>
+                        </li>
+                    </ul>
+                </section>
+
+            </div>
+
+            <!-- RIGHT COLUMN: Visual Gallery (Simulated Graphics) -->
+            <div class="w-full md:w-1/2 bg-[#0c0c0c] border-l border-zinc-900 p-8 md:p-16 space-y-8">
+                
+                <!-- 1. Semantic Segmentation Sim -->
+                <div class="relative w-full h-[300px] border border-zinc-800 rounded-lg overflow-hidden group shadow-2xl shadow-purple-900/20 bg-black flex flex-col">
+                    <div class="h-8 bg-zinc-900 border-b border-zinc-800 flex items-center px-4 justify-between">
+                        <span class="font-mono text-[10px] text-zinc-500">MODEL: SegFormer_B0</span>
+                        <div class="flex gap-2">
+                            <span class="w-2 h-2 rounded-full bg-pink-500"></span> <!-- Road -->
+                            <span class="w-2 h-2 rounded-full bg-blue-500"></span> <!-- Car -->
+                        </div>
+                    </div>
+                    
+                    <div class="flex-grow relative bg-zinc-900 overflow-hidden">
+                        <!-- Scene Construction -->
+                        <!-- Sky -->
+                        <div class="absolute top-0 w-full h-1/3 bg-zinc-800"></div>
+                        
+                        <!-- Buildings (Simple blocks) -->
+                        <div class="absolute top-10 left-0 w-20 h-32 bg-zinc-700"></div>
+                        <div class="absolute top-16 right-10 w-24 h-24 bg-zinc-700"></div>
+                        
+                        <!-- Road (Trapezoid) -->
+                        <div class="absolute bottom-0 w-full h-2/3 bg-zinc-800" style="clip-path: polygon(40% 0, 60% 0, 100% 100%, 0% 100%); background: #18181b;"></div>
+                        
+                        <!-- OVERLAY: Segmentation Mask (Purple Tint) -->
+                        <div class="absolute bottom-0 w-full h-2/3 bg-purple-500/30 mix-blend-screen animate-pulse" style="clip-path: polygon(40% 0, 60% 0, 100% 100%, 0% 100%);"></div>
+                        
+                        <!-- Car Object (Blue Tint) -->
+                        <div class="absolute bottom-10 left-1/3 w-16 h-10 bg-blue-500/40 border border-blue-400 rounded-sm"></div>
+                    </div>
+                    
+                    <div class="absolute bottom-0 left-0 w-full bg-gradient-to-t from-black to-transparent p-4">
+                        <p class="font-mono text-xs text-purple-500">SEMANTIC_MASK</p>
+                        <p class="text-white font-medium text-sm">Pixel-wise Classification</p>
+                    </div>
+                </div>
+
+                <!-- 2. Benchmark Comparison Chart -->
+                <div class="relative w-full h-[250px] border border-zinc-800 rounded-lg overflow-hidden group shadow-2xl shadow-black bg-zinc-900/20 p-6 flex flex-col">
+                    <p class="font-mono text-[10px] text-zinc-500 mb-6">FPS vs mIoU (Speed vs Accuracy)</p>
+                    
+                    <div class="flex-grow flex items-end justify-around pb-2 border-b border-zinc-700">
+                        <!-- Fast-SCNN -->
+                        <div class="flex flex-col items-center gap-2 w-16">
+                            <div class="w-full bg-green-500 h-32 rounded-t relative group/bar">
+                                <span class="absolute -top-4 left-1/2 -translate-x-1/2 text-[9px] text-green-400 opacity-0 group-hover/bar:opacity-100 transition-opacity">120 FPS</span>
+                            </div>
+                            <span class="text-[9px] font-mono text-zinc-400 text-center">Fast-SCNN</span>
+                        </div>
+                        
+                        <!-- SegFormer -->
+                        <div class="flex flex-col items-center gap-2 w-16">
+                            <div class="w-full bg-purple-600 h-20 rounded-t relative group/bar">
+                                <span class="absolute -top-4 left-1/2 -translate-x-1/2 text-[9px] text-purple-400 opacity-0 group-hover/bar:opacity-100 transition-opacity">78 mIoU</span>
+                            </div>
+                            <span class="text-[9px] font-mono text-zinc-400 text-center">SegFormer</span>
+                        </div>
+
+                        <!-- YOLO -->
+                        <div class="flex flex-col items-center gap-2 w-16">
+                            <div class="w-full bg-blue-500 h-24 rounded-t relative group/bar">
+                                <span class="absolute -top-4 left-1/2 -translate-x-1/2 text-[9px] text-blue-400 opacity-0 group-hover/bar:opacity-100 transition-opacity">Balanced</span>
+                            </div>
+                            <span class="text-[9px] font-mono text-zinc-400 text-center">YOLOv8</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 3. YOLO Detection Simulation -->
+                <div class="relative w-full h-[250px] border border-zinc-800 rounded-lg overflow-hidden group shadow-2xl shadow-black bg-black flex items-center justify-center p-6">
+                    <!-- Image Area -->
+                    <div class="relative w-full h-full bg-zinc-900 border border-zinc-800 rounded overflow-hidden">
+                        <!-- Background street -->
+                        <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-zinc-800 via-black to-black"></div>
+                        
+                        <!-- Bounding Box 1 -->
+                        <div class="absolute top-1/2 left-1/4 w-12 h-12 border-2 border-green-500/80 rounded-sm animate-[pulse_2s_infinite]">
+                            <div class="absolute -top-3 left-0 bg-green-500/80 text-black text-[6px] px-1 font-bold">CAR 0.98</div>
+                        </div>
+
+                        <!-- Bounding Box 2 -->
+                        <div class="absolute bottom-1/4 right-1/4 w-6 h-10 border-2 border-red-500/80 rounded-sm animate-[pulse_3s_infinite]">
+                            <div class="absolute -top-3 left-0 bg-red-500/80 text-white text-[6px] px-1 font-bold">PED 0.92</div>
+                        </div>
+                    </div>
+                    
+                    <div class="absolute bottom-4 right-4">
+                        <p class="font-mono text-[10px] text-zinc-600 uppercase">INSTANCE_DETECTION</p>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="py-12 border-t border-zinc-900 text-center bg-[#0a0a0a] z-40 relative">
+        <p class="font-mono text-[10px] uppercase text-zinc-600">© 2026 Srinandana Y Sastry // Engineering Portfolio</p>
+    </footer>
+
+    <script>
+        lucide.createIcons();
+    </script>
+</body>
+</html>
