@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Taxi Demand Forecasting | Srinandana Y Sastry</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        .font-mono { font-family: 'JetBrains Mono', monospace; }
+        
+        /* Smooth Scrolling */
+        html { scroll-behavior: smooth; }
+
+        /* Hide scrollbar for gallery but allow scroll */
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;  /* IE and Edge */
+            scrollbar-width: none;  /* Firefox */
+        }
+
+        /* Hero Animation: Data Stream */
+        @keyframes data-flow {
+            0% { transform: translateY(0); opacity: 0; }
+            20% { opacity: 1; }
+            80% { opacity: 1; }
+            100% { transform: translateY(-100%); opacity: 0; }
+        }
+        .animate-data-flow {
+            animation: data-flow 4s linear infinite;
+        }
+    </style>
+</head>
+<body class="bg-[#0a0a0a] text-zinc-400 selection:bg-blue-500/30 min-h-screen flex flex-col relative">
+
+    <!-- 1. HERO IMAGE OVERLAY SECTION -->
+    <div id="hero-intro" class="h-screen w-full relative overflow-hidden flex items-center justify-center bg-black z-50">
+        
+        <!-- Abstract Background: Data Matrix -->
+        <div class="absolute inset-0 w-full h-full bg-[#050505]">
+            <!-- Grid -->
+            <div class="absolute inset-0 opacity-[0.05]" 
+                 style="background-image: radial-gradient(#3b82f6 1px, transparent 1px); background-size: 30px 30px;">
+            </div>
+            
+            <!-- Vertical Data Streams -->
+            <div class="absolute left-1/4 top-full w-[1px] h-64 bg-gradient-to-t from-transparent via-blue-500 to-transparent animate-data-flow" style="animation-duration: 3s;"></div>
+            <div class="absolute left-1/2 top-full w-[1px] h-48 bg-gradient-to-t from-transparent via-blue-500 to-transparent animate-data-flow" style="animation-delay: 1s; animation-duration: 5s;"></div>
+            <div class="absolute left-3/4 top-full w-[1px] h-80 bg-gradient-to-t from-transparent via-blue-500 to-transparent animate-data-flow" style="animation-delay: 2s; animation-duration: 4s;"></div>
+        </div>
+
+        <!-- Overlay Gradient -->
+        <div class="absolute inset-0 bg-gradient-to-t from-[#0a0a0a] via-transparent to-black/60 pointer-events-none"></div>
+        
+        <!-- CENTER CONTENT CONTAINER -->
+        <div class="relative z-10 flex flex-col items-center justify-center space-y-12 px-4 pointer-events-none mb-20">
+            
+            <!-- A. Title Text -->
+            <div class="text-center space-y-6">
+                <h1 class="text-4xl md:text-6xl font-black uppercase tracking-tighter text-white">
+                    Taxi Demand <span class="text-blue-500">Forecasting</span>
+                </h1>
+                <p class="font-mono text-sm md:text-base text-zinc-300 uppercase tracking-widest">
+                    Machine Learning Web Application
+                </p>
+            </div>
+
+            <!-- B. Hero Visual: Predictive Analytics Icon -->
+            <div class="flex items-center gap-8 opacity-90">
+                <!-- Data Source -->
+                <div class="w-12 h-12 border-2 border-zinc-700 rounded bg-zinc-900 flex items-center justify-center">
+                    <i data-lucide="database" class="text-zinc-500 w-6 h-6"></i>
+                </div>
+                
+                <!-- Processing Dots -->
+                <div class="flex gap-1">
+                    <div class="w-1.5 h-1.5 bg-blue-500 rounded-full animate-bounce" style="animation-delay: 0s"></div>
+                    <div class="w-1.5 h-1.5 bg-blue-500 rounded-full animate-bounce" style="animation-delay: 0.1s"></div>
+                    <div class="w-1.5 h-1.5 bg-blue-500 rounded-full animate-bounce" style="animation-delay: 0.2s"></div>
+                </div>
+
+                <!-- Prediction Chart -->
+                <div class="w-16 h-12 border-2 border-blue-500 rounded-lg flex items-end justify-center gap-1 pb-1 bg-zinc-900 shadow-[0_0_15px_#3b82f6]">
+                    <div class="w-2 bg-blue-500/50 h-[40%]"></div>
+                    <div class="w-2 bg-blue-500/70 h-[60%]"></div>
+                    <div class="w-2 bg-blue-500 h-[80%]"></div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Scroll Indicator -->
+        <div class="absolute bottom-12 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 animate-bounce cursor-pointer group pointer-events-auto" onclick="document.getElementById('main-content').scrollIntoView()">
+            <span class="text-[10px] font-mono uppercase tracking-widest text-zinc-500 group-hover:text-blue-400 transition-colors">Scroll to Explore</span>
+            <i data-lucide="chevron-down" class="w-6 h-6 text-zinc-400 group-hover:text-blue-400 transition-colors"></i>
+        </div>
+    </div>
+
+    <!-- 2. NAVIGATION (Sticky) -->
+    <nav class="sticky top-0 bg-[#0a0a0a]/90 backdrop-blur-sm border-b border-zinc-900 z-40 px-6 py-4 md:px-12 lg:px-24 flex justify-between items-center">
+        <a href="index.html" class="flex items-center gap-2 group hover:opacity-80 transition-opacity">
+            <div class="w-8 h-8 bg-zinc-800 rounded-sm flex items-center justify-center text-white font-bold text-xs tracking-tighter group-hover:bg-blue-600 transition-colors">
+                <i data-lucide="arrow-left" class="w-4 h-4"></i>
+            </div>
+            <div class="leading-none">
+                <p class="text-white text-xs font-semibold uppercase tracking-widest">Back to Portfolio</p>
+            </div>
+        </a>
+        <div class="text-[10px] font-mono text-zinc-600 uppercase tracking-widest hidden md:block">
+            PROJECT_ID: ML_DEMAND_FORECAST_04
+        </div>
+    </nav>
+
+    <!-- 3. MAIN CONTENT (Split View) -->
+    <main id="main-content" class="flex-grow w-full max-w-[1920px] mx-auto">
+        <div class="flex flex-col md:flex-row min-h-screen">
+            
+            <!-- LEFT COLUMN: Text Content -->
+            <div class="w-full md:w-1/2 p-8 md:p-16 lg:p-24 space-y-16 bg-[#0a0a0a]">
+                
+                <!-- Project Objective -->
+                <section class="space-y-4">
+                    <h3 class="text-xl text-zinc-100 flex items-center gap-3 font-medium border-b border-zinc-800 pb-4">
+                        Project Objective
+                    </h3>
+                    <p class="text-zinc-400 leading-relaxed text-base md:text-lg">
+                        The objective was to develop a machine learning–driven web application capable of forecasting taxi demand using historical ride data. The goal was to identify key temporal and environmental drivers of demand and present accurate, interpretable predictions through an interactive, real-time web interface.
+                    </p>
+                </section>
+
+                <!-- Technical Overview -->
+                <section class="space-y-4">
+                    <h3 class="text-xl text-zinc-100 flex items-center gap-3 font-medium border-b border-zinc-800 pb-4">
+                        Technical Overview
+                    </h3>
+                    <p class="text-zinc-400 leading-relaxed text-base md:text-lg mb-4">
+                        The project leverages supervised machine learning models to predict ride demand based on historical usage patterns, weather conditions, and time-based features. A user-facing web application was built using <span class="text-blue-500 font-medium">Streamlit</span>, enabling real-time interaction with the trained model.
+                    </p>
+                    <p class="text-zinc-400 leading-relaxed text-base md:text-lg">
+                        Two models—<span class="text-zinc-200">Linear Regression</span> and <span class="text-zinc-200">Random Forest Regression</span>—were implemented and compared. The Random Forest model demonstrated superior accuracy by effectively capturing non-linear relationships in the data.
+                    </p>
+                </section>
+
+                 <!-- Data Analysis & Modeling -->
+                 <section class="space-y-6">
+                    <h3 class="text-xl text-zinc-100 flex items-center gap-3 font-medium border-b border-zinc-800 pb-4">
+                        Data Analysis & Modeling
+                    </h3>
+                    <div class="space-y-4 font-mono text-sm text-zinc-400">
+                        <div class="flex gap-4">
+                            <div class="min-w-[120px] text-zinc-500">Dataset</div>
+                            <div class="text-zinc-300">10,886 records (Temp, Humidity, Wind, Season)</div>
+                        </div>
+                        <div class="flex gap-4">
+                            <div class="min-w-[120px] text-zinc-500">Engineering</div>
+                            <div class="text-zinc-300">Temporal pattern extraction & outlier removal</div>
+                        </div>
+                        <div class="flex gap-4">
+                            <div class="min-w-[120px] text-zinc-500">Performance</div>
+                            <div class="text-zinc-300">
+                                <span class="block">Linear Regression: MAE ≈ 82</span>
+                                <span class="block text-blue-500">Random Forest: MAE ≈ 60 (Best)</span>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Outcomes -->
+                <section class="space-y-6">
+                    <h3 class="text-xl text-zinc-100 flex items-center gap-3 font-medium border-b border-zinc-800 pb-4">
+                        Outcomes & Contributions
+                    </h3>
+                    <ul class="space-y-6">
+                        <li class="flex gap-4 items-start">
+                            <div class="mt-1.5 w-1.5 h-1.5 rounded-full bg-blue-500 shrink-0"></div>
+                            <p class="text-zinc-400 leading-relaxed">
+                                Developed a complete end-to-end ML pipeline, covering data cleaning, feature engineering, modeling, and web deployment.
+                            </p>
+                        </li>
+                        <li class="flex gap-4 items-start">
+                            <div class="mt-1.5 w-1.5 h-1.5 rounded-full bg-blue-500 shrink-0"></div>
+                            <p class="text-zinc-400 leading-relaxed">
+                                Successfully deployed a user-friendly forecasting tool using Streamlit, bridging complex data science with practical decision-making.
+                            </p>
+                        </li>
+                        <li class="flex gap-4 items-start">
+                            <div class="mt-1.5 w-1.5 h-1.5 rounded-full bg-blue-500 shrink-0"></div>
+                            <p class="text-zinc-400 leading-relaxed">
+                                Showcased the effectiveness of ensemble models (Random Forest) for solving real-world demand prediction problems.
+                            </p>
+                        </li>
+                    </ul>
+                </section>
+
+            </div>
+
+            <!-- RIGHT COLUMN: Visual Gallery (Simulated Graphics) -->
+            <div class="w-full md:w-1/2 bg-[#0c0c0c] border-l border-zinc-900 p-8 md:p-16 space-y-8">
+                
+                <!-- 1. Streamlit Dashboard Mockup -->
+                <div class="relative w-full h-[300px] border border-zinc-800 rounded-lg overflow-hidden group shadow-2xl shadow-black bg-[#0f0f10] flex flex-col">
+                    <!-- Fake Browser Header -->
+                    <div class="h-8 bg-zinc-900 border-b border-zinc-800 flex items-center px-4 gap-2">
+                        <div class="w-2 h-2 rounded-full bg-red-500"></div>
+                        <div class="w-2 h-2 rounded-full bg-yellow-500"></div>
+                        <div class="w-2 h-2 rounded-full bg-green-500"></div>
+                        <div class="ml-4 h-4 bg-zinc-800 rounded w-32"></div>
+                    </div>
+                    
+                    <!-- Dashboard Body -->
+                    <div class="flex-grow p-6 flex flex-col gap-4">
+                        <div class="flex justify-between items-center">
+                            <div class="h-4 w-32 bg-blue-500/20 rounded"></div>
+                            <div class="h-4 w-8 bg-zinc-800 rounded"></div>
+                        </div>
+                        
+                        <!-- Sliders -->
+                        <div class="space-y-3 opacity-70">
+                            <div class="space-y-1">
+                                <div class="h-2 w-16 bg-zinc-800 rounded"></div>
+                                <div class="h-2 w-full bg-zinc-800 rounded relative">
+                                    <div class="absolute left-1/3 w-3 h-3 bg-blue-500 rounded-full top-1/2 -translate-y-1/2"></div>
+                                </div>
+                            </div>
+                            <div class="space-y-1">
+                                <div class="h-2 w-16 bg-zinc-800 rounded"></div>
+                                <div class="h-2 w-full bg-zinc-800 rounded relative">
+                                    <div class="absolute left-2/3 w-3 h-3 bg-blue-500 rounded-full top-1/2 -translate-y-1/2"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Result Box -->
+                        <div class="mt-auto border border-blue-500/30 bg-blue-500/10 rounded p-4 text-center">
+                            <p class="font-mono text-[10px] text-blue-400 uppercase">Predicted Demand</p>
+                            <p class="text-3xl font-bold text-white mt-1">482 <span class="text-sm font-normal text-zinc-500">Rides</span></p>
+                        </div>
+                    </div>
+                    
+                    <div class="absolute bottom-0 left-0 w-full bg-gradient-to-t from-black to-transparent p-4 pointer-events-none">
+                        <p class="font-mono text-xs text-blue-500">WEB_INTERFACE</p>
+                    </div>
+                </div>
+
+                <!-- 2. Model Comparison Chart -->
+                <div class="relative w-full h-[300px] border border-zinc-800 rounded-lg overflow-hidden group shadow-2xl shadow-black bg-zinc-900/20 flex flex-col justify-end p-8">
+                    <div class="absolute top-6 left-6">
+                        <p class="font-mono text-xs text-zinc-500">MAE_COMPARISON (Lower is Better)</p>
+                    </div>
+                    
+                    <div class="flex items-end justify-center gap-12 h-48 w-full border-b border-zinc-700 pb-2">
+                        <!-- Linear Reg -->
+                        <div class="flex flex-col items-center gap-2 group/bar">
+                            <div class="text-xs font-mono text-zinc-500 group-hover/bar:text-white transition-colors">82.0</div>
+                            <div class="w-16 bg-zinc-700 h-32 rounded-t transition-all duration-500 group-hover/bar:bg-zinc-600"></div>
+                            <div class="text-xs font-mono text-zinc-500">Linear Reg</div>
+                        </div>
+                        
+                        <!-- Random Forest -->
+                        <div class="flex flex-col items-center gap-2 group/bar">
+                            <div class="text-xs font-mono text-blue-400 group-hover/bar:text-white transition-colors font-bold">60.0</div>
+                            <div class="w-16 bg-blue-600 h-24 rounded-t transition-all duration-500 group-hover/bar:bg-blue-500 shadow-[0_0_15px_#2563eb]"></div>
+                            <div class="text-xs font-mono text-blue-500 font-bold">Random Forest</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 3. Pipeline Flow -->
+                <div class="relative w-full h-[200px] border border-zinc-800 rounded-lg overflow-hidden group shadow-2xl shadow-black bg-black flex items-center justify-center">
+                    <div class="flex items-center gap-2 opacity-80">
+                        <!-- Step 1 -->
+                        <div class="flex flex-col items-center gap-2">
+                            <div class="w-10 h-10 border border-zinc-600 rounded flex items-center justify-center bg-zinc-900">
+                                <i data-lucide="database" class="w-4 h-4 text-zinc-400"></i>
+                            </div>
+                            <span class="text-[8px] font-mono text-zinc-500">DATA</span>
+                        </div>
+                        <div class="w-8 h-[1px] bg-zinc-700"></div>
+                        
+                        <!-- Step 2 -->
+                        <div class="flex flex-col items-center gap-2">
+                            <div class="w-10 h-10 border border-zinc-600 rounded flex items-center justify-center bg-zinc-900">
+                                <i data-lucide="settings-2" class="w-4 h-4 text-zinc-400"></i>
+                            </div>
+                            <span class="text-[8px] font-mono text-zinc-500">CLEAN</span>
+                        </div>
+                        <div class="w-8 h-[1px] bg-zinc-700"></div>
+
+                        <!-- Step 3 -->
+                        <div class="flex flex-col items-center gap-2">
+                            <div class="w-10 h-10 border border-blue-500 rounded flex items-center justify-center bg-zinc-900 shadow-[0_0_10px_#3b82f6]">
+                                <i data-lucide="brain-circuit" class="w-4 h-4 text-blue-500"></i>
+                            </div>
+                            <span class="text-[8px] font-mono text-blue-500">MODEL</span>
+                        </div>
+                        <div class="w-8 h-[1px] bg-zinc-700"></div>
+
+                        <!-- Step 4 -->
+                        <div class="flex flex-col items-center gap-2">
+                            <div class="w-10 h-10 border border-zinc-600 rounded flex items-center justify-center bg-zinc-900">
+                                <i data-lucide="monitor" class="w-4 h-4 text-zinc-400"></i>
+                            </div>
+                            <span class="text-[8px] font-mono text-zinc-500">WEB</span>
+                        </div>
+                    </div>
+                    
+                    <div class="absolute bottom-4 right-4">
+                        <p class="font-mono text-[10px] text-zinc-600 uppercase">ML_PIPELINE_V1.0</p>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="py-12 border-t border-zinc-900 text-center bg-[#0a0a0a] z-40 relative">
+        <p class="font-mono text-[10px] uppercase text-zinc-600">© 2026 Srinandana Y Sastry // Engineering Portfolio</p>
+    </footer>
+
+    <script>
+        lucide.createIcons();
+    </script>
+</body>
+</html>
