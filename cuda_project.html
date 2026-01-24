@@ -47,7 +47,8 @@
     <div id="hero-intro" class="h-screen w-full relative overflow-hidden flex items-center justify-center bg-black z-50">
         
         <!-- Video Background: Actual Simulation -->
-        <video autoplay loop muted playsinline class="absolute inset-0 w-full h-full object-cover opacity-60">
+        <!-- Added scale-[1.35] to zoom in and crop axes -->
+        <video autoplay loop muted playsinline class="absolute inset-0 w-full h-full object-cover opacity-60 scale-[1.35]">
             <source src="Heat_heat_transfer_simulation (1).mp4" type="video/mp4"> 
             Your browser does not support the video tag.
         </video>
@@ -205,7 +206,21 @@
             <!-- RIGHT COLUMN: Visual Gallery (Simulated Graphics) -->
             <div class="w-full md:w-1/2 bg-[#0c0c0c] border-l border-zinc-900 p-8 md:p-16 space-y-8">
                 
-                <!-- 1. Grid Visualizer -->
+                <!-- 1. Actual Simulation Video (New) -->
+                <div class="space-y-2">
+                    <div class="relative w-full h-[300px] border border-zinc-800 rounded-lg overflow-hidden group shadow-2xl shadow-orange-900/20 bg-black">
+                        <video controls autoplay loop muted class="w-full h-full object-contain">
+                            <source src="Heat_heat_transfer_simulation (1).mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                    </div>
+                    <div class="flex justify-between items-center px-1">
+                         <p class="font-mono text-xs text-orange-500">SIMULATION_OUTPUT</p>
+                         <p class="text-zinc-500 text-xs uppercase tracking-wider">Actual 2D Heat Conduction Simulation</p>
+                    </div>
+                </div>
+
+                <!-- 2. Grid Visualizer -->
                 <div class="relative w-full h-[300px] border border-zinc-800 rounded-lg overflow-hidden group shadow-2xl shadow-orange-900/20 bg-[#0f0f10] flex flex-col">
                     <div class="h-8 bg-zinc-900 border-b border-zinc-800 flex items-center px-4 justify-between">
                         <span class="font-mono text-[10px] text-zinc-500">GRID_VISUALIZATION</span>
