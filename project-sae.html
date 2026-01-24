@@ -5,13 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SAE Micro Class Aircraft | Srinandana Y Sastry</title>
     
-    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     
-    <!-- Lucide Icons -->
     <script src="https://unpkg.com/lucide@latest"></script>
     
-    <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 
     <style>
@@ -33,19 +30,14 @@
 </head>
 <body class="bg-[#0a0a0a] text-zinc-400 selection:bg-blue-500/30 min-h-screen flex flex-col relative">
 
-    <!-- 1. VIDEO OVERLAY SECTION -->
     <div id="video-intro" class="h-screen w-full relative overflow-hidden flex items-center justify-center bg-black z-50">
-        <!-- Video Background -->
         <video autoplay loop muted playsinline class="absolute inset-0 w-full h-full object-cover opacity-60">
-            <source src="IMG_0505.MOV" type="video/mp4"> 
-            <!-- Fallback text if video fails -->
+            <source src="flight video.mov" type="video/mp4"> 
             Your browser does not support the video tag.
         </video>
         
-        <!-- Overlay Gradient -->
         <div class="absolute inset-0 bg-gradient-to-t from-[#0a0a0a] via-transparent to-black/50"></div>
         
-        <!-- Title Text -->
         <div class="relative z-10 text-center space-y-6 px-4">
             <h1 class="text-5xl md:text-7xl font-light text-white tracking-tight">
                 Project <span class="text-blue-500 italic">Redrocket</span>
@@ -55,14 +47,12 @@
             </p>
         </div>
 
-        <!-- Scroll Indicator -->
         <div class="absolute bottom-12 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 animate-bounce cursor-pointer group" onclick="document.getElementById('main-content').scrollIntoView()">
             <span class="text-[10px] font-mono uppercase tracking-widest text-zinc-500 group-hover:text-blue-400 transition-colors">Scroll to Explore</span>
             <i data-lucide="chevron-down" class="w-6 h-6 text-zinc-400 group-hover:text-blue-400 transition-colors"></i>
         </div>
     </div>
 
-    <!-- 2. NAVIGATION (Sticky after video) -->
     <nav class="sticky top-0 bg-[#0a0a0a]/90 backdrop-blur-sm border-b border-zinc-900 z-40 px-6 py-4 md:px-12 lg:px-24 flex justify-between items-center">
         <a href="index.html" class="flex items-center gap-2 group hover:opacity-80 transition-opacity">
             <div class="w-8 h-8 bg-zinc-800 rounded-sm flex items-center justify-center text-white font-bold text-xs tracking-tighter group-hover:bg-blue-600 transition-colors">
@@ -77,14 +67,11 @@
         </div>
     </nav>
 
-    <!-- 3. MAIN CONTENT (Split View) -->
     <main id="main-content" class="flex-grow w-full max-w-[1920px] mx-auto">
         <div class="flex flex-col lg:flex-row min-h-screen">
             
-            <!-- LEFT COLUMN: Content -->
             <div class="w-full lg:w-1/2 p-8 md:p-16 lg:p-24 space-y-16 bg-[#0a0a0a]">
                 
-                <!-- Project Objective -->
                 <section class="space-y-4">
                     <h3 class="text-xl text-zinc-100 flex items-center gap-3 font-medium border-b border-zinc-800 pb-4">
                         Project Objective
@@ -94,7 +81,6 @@
                     </p>
                 </section>
 
-                <!-- Technical Description -->
                 <section class="space-y-4">
                     <h3 class="text-xl text-zinc-100 flex items-center gap-3 font-medium border-b border-zinc-800 pb-4">
                         Technical Description
@@ -104,7 +90,6 @@
                     </p>
                 </section>
 
-                <!-- Outcomes & Leadership -->
                 <section class="space-y-6">
                     <h3 class="text-xl text-zinc-100 flex items-center gap-3 font-medium border-b border-zinc-800 pb-4">
                         Outcomes & Leadership Contributions
@@ -139,30 +124,39 @@
 
             </div>
 
-            <!-- RIGHT COLUMN: Image (Sticky) -->
             <div class="w-full lg:w-1/2 relative bg-[#0c0c0c] border-l border-zinc-900 min-h-[50vh] lg:min-h-screen">
-                <div class="lg:sticky lg:top-20 lg:h-[calc(100vh-80px)] w-full flex items-center justify-center p-8 md:p-16">
-                    <div class="relative w-full h-full max-h-[800px] border border-zinc-800 rounded-lg overflow-hidden group shadow-2xl shadow-black">
-                        <!-- Image Container -->
+                <div class="lg:sticky lg:top-20 lg:h-[calc(100vh-80px)] w-full p-8 md:p-16 overflow-y-auto no-scrollbar space-y-8">
+                    
+                    <div class="relative w-full aspect-[4/3] border border-zinc-800 rounded-lg overflow-hidden group shadow-2xl shadow-black">
                         <div class="absolute inset-0 bg-zinc-900">
-                            <img src="Redrocket.jpg" 
-                                 alt="SAE Micro Class Aircraft - Redrocket" 
-                                 class="w-full h-full object-cover object-center opacity-90 transition-transform duration-1000 group-hover:scale-105">
+                            <img src="Me with Aircraft.jpg" 
+                                 alt="Holding the Redrocket Aircraft" 
+                                 class="w-full h-full object-cover object-top opacity-90 transition-transform duration-1000 group-hover:scale-105">
                         </div>
-                        
-                        <!-- Minimal Overlay -->
-                        <div class="absolute bottom-0 left-0 w-full bg-gradient-to-t from-black/90 via-black/50 to-transparent p-8">
-                            <p class="font-mono text-xs text-blue-400 mb-1">PROTOTYPE_ID: RED_ROCKET</p>
-                            <p class="text-white font-medium">Final Assembly Configuration</p>
+                        <div class="absolute bottom-0 left-0 w-full bg-gradient-to-t from-black/90 via-black/50 to-transparent p-6">
+                            <p class="font-mono text-xs text-blue-400 mb-1">DESIGNER_LEAD</p>
+                            <p class="text-white font-medium">Final Prototype Inspection</p>
                         </div>
                     </div>
+
+                    <div class="relative w-full aspect-[16/9] border border-zinc-800 rounded-lg overflow-hidden group shadow-2xl shadow-black">
+                        <div class="absolute inset-0 bg-zinc-900">
+                            <img src="Group photo SAE.jpg" 
+                                 alt="SAE Team Group Photo" 
+                                 class="w-full h-full object-cover object-center opacity-90 transition-transform duration-1000 group-hover:scale-105">
+                        </div>
+                        <div class="absolute bottom-0 left-0 w-full bg-gradient-to-t from-black/90 via-black/50 to-transparent p-6">
+                            <p class="font-mono text-xs text-blue-400 mb-1">TEAM_ROSTER</p>
+                            <p class="text-white font-medium">SAE Aero Design Series - Lakeland, FL</p>
+                        </div>
+                    </div>
+
                 </div>
             </div>
 
         </div>
     </main>
 
-    <!-- Footer -->
     <footer class="py-12 border-t border-zinc-900 text-center bg-[#0a0a0a] z-40 relative">
         <p class="font-mono text-[10px] uppercase text-zinc-600">© 2026 Srinandana Y Sastry // Engineering Portfolio</p>
     </footer>
