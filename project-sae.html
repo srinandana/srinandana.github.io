@@ -12,12 +12,11 @@
     <script src="https://unpkg.com/lucide@latest"></script>
     
     <!-- Fonts -->
-    <!-- Switched to Oswald (Headings) and Roboto (Body) -->
-    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;700&family=Roboto:wght@300;400;500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <!-- Reverted to Inter and JetBrains Mono -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 
     <style>
-        body { font-family: 'Roboto', sans-serif; }
-        .font-heading { font-family: 'Oswald', sans-serif; }
+        body { font-family: 'Inter', sans-serif; }
         .font-mono { font-family: 'JetBrains Mono', monospace; }
         
         /* Smooth Scrolling */
@@ -48,9 +47,9 @@
         
         <!-- Title Text -->
         <div class="relative z-10 text-center space-y-6 px-4">
-            <!-- Applied font-heading (Oswald) and text-red-700 (darker red) -->
-            <h1 class="text-5xl md:text-6xl font-heading font- uppercase tracking-tight text-white">
-                Project <span class="text-red-700 italic tracking-tighter">Redrocket</span>
+            <!-- Reverted font style (Inter Black Italic) but kept darker red (text-red-700) -->
+            <h1 class="text-4xl md:text-6xl font-black italic uppercase tracking-tighter text-white">
+                Project <span class="text-red-700">Redrocket</span>
             </h1>
             <p class="font-mono text-sm md:text-base text-zinc-300 uppercase tracking-widest">
                 SAE Micro Class Design : Team Vymanika
@@ -71,7 +70,7 @@
                 <i data-lucide="arrow-left" class="w-4 h-4"></i>
             </div>
             <div class="leading-none">
-                <p class="text-white text-xs font-heading uppercase tracking-widest">Back to Home Page</p>
+                <p class="text-white text-xs font-semibold uppercase tracking-widest">Back to Home Page</p>
             </div>
         </a>
         <div class="text-[10px] font-mono text-zinc-600 uppercase tracking-widest hidden md:block">
@@ -88,41 +87,41 @@
                 
                 <!-- Project Objective -->
                 <section class="space-y-4">
-                    <h3 class="text-2xl text-zinc-100 flex items-center gap-3 font-heading font-medium border-b border-zinc-800 pb-4 uppercase tracking-wide">
+                    <h3 class="text-xl text-zinc-100 flex items-center gap-3 font-medium border-b border-zinc-800 pb-4">
                         Project Objective
                     </h3>
-                    <p class="text-zinc-400 leading-relaxed text-base md:text-lg font-light">
+                    <p class="text-zinc-400 leading-relaxed text-base md:text-lg">
                         The objective of this project was to design and build a micro-class unmanned aerial vehicle (UAV) capable of taking off within 9 feet while adhering to strict competition constraints, including a maximum wingspan of 36 inches and a power limit of 450 watts. The aircraft was required to reliably carry a standardized payload while maintaining stable and efficient flight performance.
                     </p>
                 </section>
 
                 <!-- Outcomes & Leadership -->
                 <section class="space-y-6">
-                    <h3 class="text-2xl text-zinc-100 flex items-center gap-3 font-heading font-medium border-b border-zinc-800 pb-4 uppercase tracking-wide">
+                    <h3 class="text-xl text-zinc-100 flex items-center gap-3 font-medium border-b border-zinc-800 pb-4">
                         Outcomes & Leadership Contributions
                     </h3>
                     <ul class="space-y-6">
                         <li class="flex gap-4 items-start">
                             <div class="mt-1.5 w-1.5 h-1.5 rounded-full bg-blue-500 shrink-0"></div>
-                            <p class="text-zinc-400 leading-relaxed font-light">
+                            <p class="text-zinc-400 leading-relaxed">
                                 Captained an 18-member multidisciplinary team, overseeing design, fabrication, testing, and competition readiness.
                             </p>
                         </li>
                         <li class="flex gap-4 items-start">
                             <div class="mt-1.5 w-1.5 h-1.5 rounded-full bg-blue-500 shrink-0"></div>
-                            <p class="text-zinc-400 leading-relaxed font-light">
+                            <p class="text-zinc-400 leading-relaxed">
                                 Project was selected at the international level and invited to compete at the SAE Aero Design Series (Micro Class), Lakeland, Florida, USA.
                             </p>
                         </li>
                         <li class="flex gap-4 items-start">
                             <div class="mt-1.5 w-1.5 h-1.5 rounded-full bg-blue-500 shrink-0"></div>
-                            <p class="text-zinc-400 leading-relaxed font-light">
+                            <p class="text-zinc-400 leading-relaxed">
                                 Successfully met all performance and regulatory requirements defined by the competition.
                             </p>
                         </li>
                         <li class="flex gap-4 items-start">
                             <div class="mt-1.5 w-1.5 h-1.5 rounded-full bg-blue-500 shrink-0"></div>
-                            <p class="text-zinc-400 leading-relaxed font-light">
+                            <p class="text-zinc-400 leading-relaxed">
                                 Achieved an overall <span class="text-zinc-200 font-medium">6th place finish globally</span> and <span class="text-zinc-200 font-medium">2nd place ranking in Asia</span>, demonstrating strong technical execution and team coordination.
                             </p>
                         </li>
@@ -131,10 +130,10 @@
 
                 <!-- Technical Description -->
                 <section class="space-y-4">
-                    <h3 class="text-2xl text-zinc-100 flex items-center gap-3 font-heading font-medium border-b border-zinc-800 pb-4 uppercase tracking-wide">
+                    <h3 class="text-xl text-zinc-100 flex items-center gap-3 font-medium border-b border-zinc-800 pb-4">
                         Technical Description
                     </h3>
-                    <p class="text-zinc-400 leading-relaxed text-base md:text-lg font-light">
+                    <p class="text-zinc-400 leading-relaxed text-base md:text-lg">
                         The aircraft is a high-wing, electric-powered monoplane optimized for short take-off performance. It incorporates a high-camber airfoil, a conventional tail configuration, and an efficient propulsion system selected to meet thrust and power limitations. The overall configuration emphasizes aerodynamic efficiency, stability, and manufacturability while operating within tight size and energy constraints.
                     </p>
                 </section>
@@ -167,7 +166,7 @@
                     </div>
                     <div class="absolute bottom-0 left-0 w-full bg-gradient-to-t from-black/90 via-black/50 to-transparent p-6">
                         <p class="font-mono text-xs text-blue-400 mb-1">TECHNICAL_VIEW</p>
-                        <p class="text-white font-medium text-sm font-heading">Aircraft Assembly & Avionics</p>
+                        <p class="text-white font-medium text-sm">Aircraft Assembly & Avionics</p>
                     </div>
                 </div>
 
@@ -180,7 +179,7 @@
                     </div>
                     <div class="absolute bottom-0 left-0 w-full bg-gradient-to-t from-black/90 via-black/50 to-transparent p-6">
                         <p class="font-mono text-xs text-blue-400 mb-1">DESIGNER_LEAD</p>
-                        <p class="text-white font-medium text-sm font-heading">Final Prototype Inspection</p>
+                        <p class="text-white font-medium text-sm">Final Prototype Inspection</p>
                     </div>
                 </div>
 
@@ -193,7 +192,7 @@
                     </div>
                     <div class="absolute bottom-0 left-0 w-full bg-gradient-to-t from-black/90 via-black/50 to-transparent p-6">
                         <p class="font-mono text-xs text-blue-400 mb-1">TEAM_ROSTER</p>
-                        <p class="text-white font-medium text-sm font-heading">SAE Aero Design Series - Lakeland, FL</p>
+                        <p class="text-white font-medium text-sm">SAE Aero Design Series - Lakeland, FL</p>
                     </div>
                 </div>
 
