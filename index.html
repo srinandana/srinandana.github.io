@@ -5,20 +5,53 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Srinandana Yogananda Sastry | Portfolio</title>
     
+    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Lucide Icons -->
     <script src="https://unpkg.com/lucide@latest"></script>
+    
+    <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 
     <style>
         body { font-family: 'Inter', sans-serif; }
         .font-mono { font-family: 'JetBrains Mono', monospace; }
         
+        /* Custom Animations */
+        @keyframes spin-reverse {
+            from { transform: rotate(360deg); }
+            to { transform: rotate(0deg); }
+        }
+        .animate-spin-reverse {
+            animation: spin-reverse 8s linear infinite;
+        }
+
         @keyframes wobble {
             0%, 100% { transform: rotate(-5deg); }
             50% { transform: rotate(5deg); }
         }
-        .animate-wobble { animation: wobble 2s ease-in-out infinite; }
+        .animate-wobble {
+            animation: wobble 2s ease-in-out infinite;
+        }
 
+        @keyframes scan {
+            0% { top: 0%; opacity: 0; }
+            50% { opacity: 1; }
+            100% { top: 100%; opacity: 0; }
+        }
+        .animate-scan {
+            animation: scan 3s linear infinite;
+        }
+
+        @keyframes signal {
+            0% { transform: scale(0.8); opacity: 1; }
+            100% { transform: scale(2); opacity: 0; }
+        }
+        .animate-signal {
+            animation: signal 2s ease-out infinite;
+        }
+        
         .visual-container {
             transition: opacity 0.4s ease-in-out, transform 0.4s ease-in-out;
             opacity: 0;
@@ -29,7 +62,7 @@
             align-items: center;
             justify-content: center;
             pointer-events: none;
-            transform: scale(0.95);
+            transform: scale(0.95); /* Slight zoom out when inactive */
         }
         
         .visual-container.active {
@@ -38,23 +71,26 @@
             transform: scale(1);
         }
         
+        /* Specific styling for the hero image container - CENTERED */
         .hero-image-container {
             position: absolute;
             left: 50%;
             top: 50%;
-            transform: translate(-50%, -50%);
-            width: 60%;
-            height: 70%;
+            transform: translate(-50%, -50%); /* Centering transform */
+            width: 60%; /* Adjusted width for better proportion */
+            height: 70%; /* Adjusted height */
             overflow: hidden;
-            border: 1px solid #27272a;
+            border: 1px solid #27272a; /* Zinc-800 */
         }
 
         .hero-image-container img {
             width: 100%;
             height: 100%;
             object-fit: cover;
+            /* grayscale handling managed by tailwind classes in HTML */
         }
 
+        /* Project Card Styling */
         .project-card {
             transition: all 0.3s ease;
             height: 100%;
@@ -62,10 +98,11 @@
             flex-direction: column;
         }
         .project-card:hover {
-            border-color: #3b82f6;
-            background-color: rgba(39, 39, 42, 0.4);
+            border-color: #3b82f6; /* blue-500 */
+            background-color: rgba(39, 39, 42, 0.4); /* zinc-800 with opacity */
         }
 
+        /* Mini Render Windows inside Cards */
         .mini-render-window {
             height: 120px;
             width: 100%;
@@ -79,99 +116,488 @@
             margin-bottom: 1rem;
         }
         
+        /* Filter Button Styling */
         .filter-btn {
             @apply px-3 py-1 text-[10px] font-mono border border-zinc-800 rounded-full transition-all cursor-pointer hover:border-blue-500 hover:text-blue-400;
         }
         .filter-btn.active {
             @apply bg-zinc-800 text-blue-400 border-blue-500;
         }
+        
+        /* Disable scrollbar for cleaner look if needed, but allow scrolling */
+        /* .custom-scrollbar::-webkit-scrollbar { display: none; } */
     </style>
 </head>
 <body class="bg-[#0a0a0a] text-zinc-400 overflow-x-hidden selection:bg-blue-500/30">
 
     <div class="flex flex-col min-h-screen">
+        
+        <!-- TOP SECTION: Split View for Hero & Experience (Sticky Experience Panel) -->
         <div class="flex flex-col md:flex-row w-full">
             
+            <!-- LEFT: NARRATIVE SIDE (Hero + Experience) -->
             <div class="w-full md:w-1/2 p-6 md:p-16 lg:p-24 relative">
+                
+                <!-- Navigation / Header -->
                 <nav class="mb-24 flex justify-between items-center">
                     <div class="flex items-center gap-2 group cursor-default">
-                        <div class="w-8 h-8 bg-blue-600 rounded-sm flex items-center justify-center text-white font-bold text-xs tracking-tighter">SRI</div>
-                        <p class="text-white text-sm font-semibold uppercase tracking-widest">Srinandana Y Sastry</p>
+                        <div class="w-8 h-8 bg-blue-600 rounded-sm flex items-center justify-center text-white font-bold text-xs tracking-tighter">
+                            SRI
+                        </div>
+                        <div class="leading-none">
+                            <p class="text-white text-sm font-semibold uppercase tracking-widest">Srinandana Y Sastry</p>
+                        </div>
+                    </div>
+                    <div class="flex gap-6 text-[11px] font-mono uppercase tracking-widest">
+                        <a href="#experience" class="hover:text-blue-500 transition-colors">Experience</a>
+                        <a href="#projects" class="hover:text-blue-500 transition-colors">Projects</a>
+                        <a href="#contact" class="hover:text-blue-500 transition-colors text-zinc-600">Contact</a>
                     </div>
                 </nav>
 
+                <!-- Hero Section (Added ID for tracking) -->
                 <section id="hero-section" class="mb-32 flex flex-col justify-center min-h-[40vh]">
-                    <h1 class="text-4xl md:text-6xl font-light text-zinc-100 leading-tight mb-8">Hi There ! <span class="text-blue-500 italic">Welcome!!</span></h1>
-                    <p class="max-w-md text-lg text-zinc-500 mb-10 leading-relaxed">Mechanical Engineering Graduate Student at Iowa State University.</p>
+                    <h1 class="text-4xl md:text-6xl font-light text-zinc-100 leading-tight mb-8">
+                        Hi There ! <span class="text-blue-500 italic"> </span> Welcome!!
+                    </h1>
+                    <p class="max-w-md text-lg text-zinc-500 mb-10 leading-relaxed">
+                       I'm a Mechanical Engineering Graduate Student at Iowa State University. Specializing in Machine Learning for Cyber-Physical Systems, solid modeling, and complex design optimization.
+                    </p>
+                    <div class="flex gap-4">
+                        <a href="Srinandana_CV (3).pdf" target="_blank" class="px-5 py-2.5 bg-zinc-900 border border-zinc-800 text-white text-xs font-mono uppercase tracking-widest hover:border-blue-500 transition-all text-center flex items-center">
+                            Here's my CV
+                        </a>
+                        <div class="flex items-center gap-3 px-4 border-l border-zinc-800 ml-4">
+                            <a href="https://www.linkedin.com/in/sri-isu/" target="_blank" rel="noopener noreferrer">
+                                <i data-lucide="linkedin" class="w-4 h-4 hover:text-blue-500 cursor-pointer"></i>
+                            </a>
+                            <i data-lucide="mail" class="w-4 h-4 hover:text-blue-500 cursor-pointer"></i>
+                        </div>
+                    </div>
                 </section>
 
+                <!-- 1. Experience Section -->
                 <div id="experience" class="space-y-16 mb-24">
-                    <h2 class="text-xs font-mono uppercase tracking-widest text-blue-500">01 // Experience</h2>
+                    <div class="flex items-center gap-4 mb-8">
+                        <h2 class="text-xs font-mono uppercase tracking-widest text-blue-500">01 // Experience</h2>
+                        <div class="h-[1px] bg-zinc-800 flex-grow"></div>
+                    </div>
+
+                    <!-- Role 1 -->
                     <div class="space-y-2">
-                        <h3 class="text-xl text-zinc-100">Research Assistant</h3>
-                        <p class="text-sm text-blue-500 font-mono">Iowa State University // NSF Project</p>
+                        <div class="flex justify-between items-baseline">
+                            <h3 class="text-xl text-zinc-100 font-medium">Research Assistant</h3>
+                            <span class="text-xs font-mono text-zinc-600">MAY 2025 — PRESENT</span>
+                        </div>
+                        <p class="text-sm text-blue-500 font-mono mb-4">Iowa State University // NSF Funded AI-Based AFM Project</p>
+                        <ul class="list-disc list-outside ml-4 text-zinc-500 space-y-2 leading-relaxed text-sm">
+                            <li>Designing a deep learning-based sequence-to-sequence LSTM framework for modeling nonlinear actuator dynamics.</li>
+                            <li>Developing black-box identification pipelines for nonlinear hysteretic systems to improve precision.</li>
+                            <li>Reduced training time by 50% using GPU-based computation and B-spline decomposition.</li>
+                        </ul>
+                    </div>
+
+                    <!-- Role 2 -->
+                    <div class="space-y-2">
+                        <div class="flex justify-between items-baseline">
+                            <h3 class="text-xl text-zinc-100 font-medium">Teaching Assistant</h3>
+                            <span class="text-xs font-mono text-zinc-600">AUG 2024 — PRESENT</span>
+                        </div>
+                        <p class="text-sm text-blue-500 font-mono mb-4">Iowa State University // Heat Transfer & System Dynamics</p>
+                        <ul class="list-disc list-outside ml-4 text-zinc-500 space-y-2 leading-relaxed text-sm">
+                            <li>Supporting 100+ students through labs and recitations for ME 4360 and ME 4210.</li>
+                            <li>Facilitating lab safety protocols and training students on specialized thermal equipment.</li>
+                            <li>Achieved strong performance feedback (4.3/5.0) for instructional outcomes.</li>
+                        </ul>
+                    </div>
+
+                    <!-- Role 3 -->
+                    <div class="space-y-2">
+                        <div class="flex justify-between items-baseline">
+                            <h3 class="text-xl text-zinc-100 font-medium">Research Intern</h3>
+                            <span class="text-xs font-mono text-zinc-600">JUL 2023 — FEB 2024</span>
+                        </div>
+                        <p class="text-sm text-blue-500 font-mono mb-4">Indian Institute of Science (IISc) // Nanometrology Lab</p>
+                        <ul class="list-disc list-outside ml-4 text-zinc-500 space-y-2 leading-relaxed text-sm">
+                            <li>Investigated micro-robotic compliant mechanism designs for bridge-amplifier nanopositioners.</li>
+                            <li>Conducted static and modal characterization using COMSOL Multiphysics and MATLAB.</li>
+                            <li>Collaborated with fabrication teams to support prototype development.</li>
+                        </ul>
+                    </div>
+
+                    <!-- Role 4 (New) -->
+                    <div class="space-y-2">
+                        <div class="flex justify-between items-baseline">
+                            <h3 class="text-xl text-zinc-100 font-medium">Mechanical Design Intern</h3>
+                            <span class="text-xs font-mono text-zinc-600">SEP 2022 — NOV 2022</span>
+                        </div>
+                        <p class="text-sm text-blue-500 font-mono mb-4">Ace Designers Ltd. // Innovation & Growth Department</p>
+                        <ul class="list-disc list-outside ml-4 text-zinc-500 space-y-2 leading-relaxed text-sm">
+                            <li>Researched machinery design and performed root cause analysis to identify opportunities for system improvements.</li>
+                            <li>Created and optimized 3D CAD models, focusing on sheet metal parts and assemblies under tight deadlines.</li>
+                            <li>Led systematic disassembly of machines, assigning unique IDs for accurate identification and process documentation.</li>
+                        </ul>
                     </div>
                 </div>
             </div>
 
+            <!-- RIGHT: FIXED VISUAL CANVAS (Sticky only for Hero & Experience) -->
             <div class="hidden md:block w-1/2 h-screen sticky top-0 overflow-hidden bg-[#0c0c0c] border-l border-zinc-900">
+                <!-- Background Grid Pattern -->
+                <div class="absolute inset-0 opacity-[0.03]" 
+                     style="background-image: linear-gradient(#fff 1px, transparent 1px), linear-gradient(90deg, #fff 1px, transparent 1px); background-size: 40px 40px;">
+                </div>
+
+                <!-- Main Viewport -->
                 <div class="relative h-full w-full flex flex-col items-center justify-center p-20">
                     
-                    <div class="absolute top-8 left-8 right-8 flex justify-between font-mono text-[9px] text-zinc-600 border-b border-zinc-900 pb-2 uppercase tracking-widest">
-                        <div class="flex items-center gap-2"><span class="w-2 h-2 rounded-full bg-green-500 animate-pulse"></span>Live_Render_Engine</div>
+                    <!-- Status Bar -->
+                    <div class="absolute top-8 left-8 right-8 flex justify-between font-mono text-[9px] text-zinc-600 border-b border-zinc-900 pb-2 uppercase tracking-widest z-10">
+                        <div class="flex items-center gap-2">
+                            <span class="w-2 h-2 rounded-full bg-green-500 animate-pulse"></span>
+                            Live_Render_Engine
+                        </div>
                         <div id="project-ref">REF: PORTFOLIO_HOME</div>
                     </div>
 
+                    <!-- Dynamic Content Container -->
                     <div class="w-full h-full relative flex items-center justify-center">
-                        <div id="visual-hero" class="visual-container active">
-                            <div class="hero-image-container">
-                                <img src="WhatsApp Image 2026-01-14 at 1.58.29 PM.jpeg" class="grayscale">
+
+                        <!-- HERO VISUAL (Profile Picture) -->
+                        <div id="visual-hero" class="visual-container active w-full h-full">
+                             <!-- Rectangular Image Container spanning right half -->
+                             <div class="hero-image-container group">
+                                 <div class="absolute inset-0 bg-blue-500/10 mix-blend-overlay opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none z-10"></div>
+                                 <img src="WhatsApp Image 2026-01-14 at 1.58.29 PM.jpeg" 
+                                      alt="Srinandana Y Sastry" 
+                                      class="grayscale group-hover:grayscale-0 transition-all duration-700 ease-in-out"
+                                      onerror="this.src='https://ui-avatars.com/api/?name=Sri+Sastry&background=0a0a0a&color=3b82f6&size=256&font-size=0.33'; this.parentElement.classList.add('flex', 'items-center', 'justify-center', 'bg-zinc-900');">
+                                 
+                                 <div class="absolute bottom-4 right-4 text-right z-20">
+                                    <p class="font-mono text-[9px] text-zinc-500 uppercase tracking-widest bg-[#0a0a0a]/80 px-2 py-1 inline-block">System_Online</p>
+                                 </div>
                             </div>
                         </div>
                         
+                        <!-- Experience Visual (Placeholder/Simple Animation) -->
                         <div id="visual-experience" class="visual-container">
                             <div class="relative w-64 h-64 flex flex-col gap-4">
+                                <div class="h-2 w-full bg-zinc-800 rounded animate-pulse"></div>
+                                <div class="h-2 w-3/4 bg-zinc-800 rounded animate-pulse" style="animation-delay: 0.2s"></div>
+                                <div class="h-2 w-1/2 bg-zinc-800 rounded animate-pulse" style="animation-delay: 0.4s"></div>
                                 <div class="mt-8 border border-blue-900/30 p-4 rounded bg-blue-900/10">
                                     <p class="font-mono text-[10px] text-blue-400">>> FETCHING_CAREER_DATA</p>
+                                    <p class="font-mono text-[10px] text-zinc-500 mt-1">Found 4 records...</p>
                                 </div>
                             </div>
+                        </div>
+
+                    </div>
+
+                    <!-- Bottom Controls / Lab Labels -->
+                    <div class="absolute bottom-8 left-8 flex gap-8">
+                        <div class="space-y-1">
+                            <p class="font-mono text-[8px] uppercase text-zinc-700">Data_Input</p>
+                            <div class="flex gap-1">
+                                <div class="w-1 h-1 bg-zinc-800"></div>
+                                <div class="w-1 h-1 bg-zinc-800"></div>
+                                <div class="w-1 h-1 bg-zinc-800"></div>
+                                <div class="w-1 h-1 bg-zinc-800"></div>
+                                <div class="w-1 h-1 bg-blue-500"></div>
+                            </div>
+                        </div>
+                        <div class="space-y-1">
+                            <p class="font-mono text-[8px] uppercase text-zinc-700">Proc_Status</p>
+                            <p class="font-mono text-[9px] text-zinc-500">OPTIMIZED_STATE</p>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+
+    <div id="projects" class="w-full p-6 md:p-16 lg:p-24 bg-[#0a0a0a] border-t border-zinc-900 z-40 relative">
+    <div class="flex flex-col md:flex-row items-start md:items-center gap-4 md:gap-8 mb-12">
+        <div class="flex items-center gap-4 flex-grow-0">
+            <h2 class="text-xs font-mono uppercase tracking-widest text-blue-500">02 // Projects</h2>
+            <div class="h-[1px] bg-zinc-800 w-12 hidden md:block"></div>
+        </div>
+        
+        <div class="flex flex-wrap gap-2" id="project-filters">
+            <button class="filter-btn active" data-filter="all">All</button>
+            <button class="filter-btn" data-filter="mech">Mechanical & Controls</button>
+            <button class="filter-btn" data-filter="ml-gpu">ML & GPU Computing</button>
+            <button class="filter-btn" data-filter="ml-data">ML & Data Science</button>
+        </div>
+    </div>
+    
+    <div class="flex flex-wrap justify-center gap-6 w-full" id="projects-grid">
+        
+        <a href="project-sae.html" class="project-card border border-zinc-800 p-0 rounded-lg cursor-pointer group hover:bg-zinc-900/50 transition-all overflow-hidden bg-zinc-900/20 w-full md:w-[calc(50%-0.75rem)] xl:w-[calc(25%-1.15rem)]" data-category="mech">
+            <div class="mini-render-window">
+                <div class="w-full h-full flex items-center justify-center bg-black">
+                    <img src="Redrocket.jpg" alt="SAE Micro Class Aircraft" class="w-full h-full object-contain opacity-80 group-hover:opacity-100 transition-opacity">
+                </div>
+            </div>
+            <div class="p-6 pt-0 flex flex-col flex-grow">
+                <div class="flex justify-between items-start mb-4">
+                    <span class="font-mono text-[10px] tracking-widest text-blue-500/70">AEROSPACE</span>
+                    <i data-lucide="arrow-up-right" class="w-4 h-4 text-zinc-600 group-hover:text-blue-400 transition-colors"></i>
+                </div>
+                <h3 class="text-base text-zinc-100 font-medium mb-2 group-hover:text-blue-400 transition-colors">SAE Micro Class Aircraft</h3>
+                <p class="text-xs text-zinc-500 mb-4 line-clamp-3 flex-grow">Led a team of 18 to design and test a micro-class aircraft, achieving 6th place worldwide.</p>
+                <div class="flex gap-2 flex-wrap mt-auto">
+                    <span class="text-[9px] font-mono px-2 py-1 bg-zinc-900 border border-zinc-800 rounded text-zinc-400">SolidWorks</span>
+                </div>
+            </div>
+        </a>
+
+        <a href="spoon_project.html" class="project-card border border-zinc-800 p-0 rounded-lg cursor-pointer group hover:bg-zinc-900/50 transition-all overflow-hidden bg-zinc-900/20 w-full md:w-[calc(50%-0.75rem)] xl:w-[calc(25%-1.15rem)]" data-category="mech">
+            <div class="mini-render-window">
+                <div class="w-16 h-16 border border-zinc-600 rounded-full flex items-center justify-center animate-wobble">
+                    <div class="w-12 h-0.5 bg-blue-500"></div>
+                </div>
+            </div>
+            <div class="p-6 pt-0 flex flex-col flex-grow">
+                <div class="flex justify-between items-start mb-4">
+                    <span class="font-mono text-[10px] tracking-widest text-blue-500/70">ROBOTICS</span>
+                    <i data-lucide="arrow-up-right" class="w-4 h-4 text-zinc-600 group-hover:text-blue-400 transition-colors"></i>
+                </div>
+                <h3 class="text-base text-zinc-100 font-medium mb-2 group-hover:text-blue-400 transition-colors">Self-Stabilizing Spoon</h3>
+                <p class="text-xs text-zinc-500 mb-4 line-clamp-3 flex-grow">Assistive mechatronic system utilizing PID control for active vibration damping.</p>
+                <div class="flex gap-2 flex-wrap mt-auto">
+                    <span class="text-[9px] font-mono px-2 py-1 bg-zinc-900 border border-zinc-800 rounded text-zinc-400">Arduino</span>
+                </div>
+            </div>
+        </a>
+
+        <a href="rfid_project.html" class="project-card border border-zinc-800 p-0 rounded-lg cursor-pointer group hover:bg-zinc-900/50 transition-all overflow-hidden bg-zinc-900/20 w-full md:w-[calc(50%-0.75rem)] xl:w-[calc(25%-1.15rem)]" data-category="mech">
+            <div class="mini-render-window">
+                <div class="absolute w-16 h-16 border border-blue-500/30 rounded-full animate-signal"></div>
+                <div class="w-8 h-8 bg-zinc-800 rounded border border-zinc-600 flex items-center justify-center z-10">
+                    <i data-lucide="cpu" class="w-4 h-4 text-zinc-400"></i>
+                </div>
+            </div>
+            <div class="p-6 pt-0 flex flex-col flex-grow">
+                <div class="flex justify-between items-start mb-4">
+                    <span class="font-mono text-[10px] tracking-widest text-blue-500/70">IOT</span>
+                    <i data-lucide="arrow-up-right" class="w-4 h-4 text-zinc-600 group-hover:text-blue-400 transition-colors"></i>
+                </div>
+                <h3 class="text-base text-zinc-100 font-medium mb-2 group-hover:text-blue-400 transition-colors">RFID Cycle Counter</h3>
+                <p class="text-xs text-zinc-500 mb-4 line-clamp-3 flex-grow">Real-time IoT cycle counting system for endurance testing.</p>
+                <div class="flex gap-2 flex-wrap mt-auto">
+                    <span class="text-[9px] font-mono px-2 py-1 bg-zinc-900 border border-zinc-800 rounded text-zinc-400">IoT</span>
+                </div>
+            </div>
+        </a>
+
+        <a href="taxi_project.html" class="project-card border border-zinc-800 p-0 rounded-lg cursor-pointer group hover:bg-zinc-900/50 transition-all overflow-hidden bg-zinc-900/20 w-full md:w-[calc(50%-0.75rem)] xl:w-[calc(25%-1.15rem)]" data-category="ml-data">
+            <div class="mini-render-window flex items-end gap-1 px-8 pb-8">
+                <div class="w-2 bg-zinc-700 h-[40%]"></div>
+                <div class="w-2 bg-zinc-700 h-[60%]"></div>
+                <div class="w-2 bg-blue-600 h-[90%] animate-pulse"></div>
+                <div class="w-2 bg-zinc-700 h-[50%]"></div>
+            </div>
+            <div class="p-6 pt-0 flex flex-col flex-grow">
+                <div class="flex justify-between items-start mb-4">
+                    <span class="font-mono text-[10px] tracking-widest text-blue-500/70">ML</span>
+                    <i data-lucide="arrow-up-right" class="w-4 h-4 text-zinc-600 group-hover:text-blue-400 transition-colors"></i>
+                </div>
+                <h3 class="text-base text-zinc-100 font-medium mb-2 group-hover:text-blue-400 transition-colors">Taxi Demand Forecast</h3>
+                <p class="text-xs text-zinc-500 mb-4 line-clamp-3 flex-grow">ML-based web application to forecast taxi demand using Streamlit.</p>
+                <div class="flex gap-2 flex-wrap mt-auto">
+                    <span class="text-[9px] font-mono px-2 py-1 bg-zinc-900 border border-zinc-800 rounded text-zinc-400">Python</span>
+                </div>
+            </div>
+        </a>
+
+        <a href="nlp_project.html" class="project-card border border-zinc-800 p-0 rounded-lg cursor-pointer group hover:bg-zinc-900/50 transition-all overflow-hidden bg-zinc-900/20 w-full md:w-[calc(50%-0.75rem)] xl:w-[calc(25%-1.15rem)]" data-category="ml-data">
+            <div class="mini-render-window p-4 font-mono text-[8px] flex flex-col justify-center">
+                <div class="text-green-500 mb-1">>> analyzing...</div>
+                <div class="text-zinc-500">[SENTIMENT]: POSITIVE</div>
+                <div class="text-zinc-500">[TOPIC]: "Lecture"</div>
+            </div>
+            <div class="p-6 pt-0 flex flex-col flex-grow">
+                <div class="flex justify-between items-start mb-4">
+                    <span class="font-mono text-[10px] tracking-widest text-blue-500/70">NLP</span>
+                    <i data-lucide="arrow-up-right" class="w-4 h-4 text-zinc-600 group-hover:text-blue-400 transition-colors"></i>
+                </div>
+                <h3 class="text-base text-zinc-100 font-medium mb-2 group-hover:text-blue-400 transition-colors">Review Analysis</h3>
+                <p class="text-xs text-zinc-500 mb-4 line-clamp-3 flex-grow">NLP pipeline in R using sLDA to analyze professor reviews.</p>
+                <div class="flex gap-2 flex-wrap mt-auto">
+                    <span class="text-[9px] font-mono px-2 py-1 bg-zinc-900 border border-zinc-800 rounded text-zinc-400">R</span>
+                </div>
+            </div>
+        </a>
+
+        <a href="cuda_project.html" class="project-card border border-zinc-800 p-0 rounded-lg cursor-pointer group hover:bg-zinc-900/50 transition-all overflow-hidden bg-zinc-900/20 w-full md:w-[calc(50%-0.75rem)] xl:w-[calc(25%-1.15rem)]" data-category="ml-gpu">
+            <div class="mini-render-window">
+                <video autoplay loop muted playsinline class="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity">
+                    <source src="Heat_heat_transfer_simulation (1).mp4" type="video/mp4">
+                </video>
+                <span class="absolute z-10 font-mono text-xl font-bold text-white bottom-2 right-2 drop-shadow-md">CUDA</span>
+            </div>
+            <div class="p-6 pt-0 flex flex-col flex-grow">
+                <div class="flex justify-between items-start mb-4">
+                    <span class="font-mono text-[10px] tracking-widest text-blue-500/70">HPC</span>
+                    <i data-lucide="arrow-up-right" class="w-4 h-4 text-zinc-600 group-hover:text-blue-400 transition-colors"></i>
+                </div>
+                <h3 class="text-base text-zinc-100 font-medium mb-2 group-hover:text-blue-400 transition-colors">GPU Heat Transfer</h3>
+                <p class="text-xs text-zinc-500 mb-4 line-clamp-3 flex-grow">CUDA-based GPU implementation for solving heat transfer equations.</p>
+                <div class="flex gap-2 flex-wrap mt-auto">
+                    <span class="text-[9px] font-mono px-2 py-1 bg-zinc-900 border border-zinc-800 rounded text-zinc-400">CUDA</span>
+                </div>
+            </div>
+        </a>
+
+        <a href="vision_project.html" class="project-card border border-zinc-800 p-0 rounded-lg cursor-pointer group hover:bg-zinc-900/50 transition-all overflow-hidden bg-zinc-900/20 w-full md:w-[calc(50%-0.75rem)] xl:w-[calc(25%-1.15rem)]" data-category="ml-gpu">
+            <div class="mini-render-window relative">
+                <div class="absolute bottom-0 w-full h-1/2 bg-zinc-800 skew-x-12 opacity-50"></div>
+                <div class="absolute top-4 left-4 w-6 h-6 border border-green-500 animate-pulse"></div>
+                <div class="absolute top-8 right-8 w-8 h-6 border border-red-500 animate-pulse delay-100"></div>
+            </div>
+            <div class="p-6 pt-0 flex flex-col flex-grow">
+                <div class="flex justify-between items-start mb-4">
+                    <span class="font-mono text-[10px] tracking-widest text-blue-500/70">VISION</span>
+                    <i data-lucide="arrow-up-right" class="w-4 h-4 text-zinc-600 group-hover:text-blue-400 transition-colors"></i>
+                </div>
+                <h3 class="text-base text-zinc-100 font-medium mb-2 group-hover:text-blue-400 transition-colors">Road Segmentation</h3>
+                <p class="text-xs text-zinc-500 mb-4 line-clamp-3 flex-grow">Semantic segmentation on CityScapes dataset using YOLOv8.</p>
+                <div class="flex gap-2 flex-wrap mt-auto">
+                    <span class="text-[9px] font-mono px-2 py-1 bg-zinc-900 border border-zinc-800 rounded text-zinc-400">PyTorch</span>
+                </div>
+            </div>
+        </a>
+    </div>
+</div>
+        <!-- 3. Contact Section (New) -->
+        <footer id="contact" class="py-24 border-t border-zinc-900 px-6 md:px-24">
+            <div class="flex items-center gap-4 mb-12">
+                <h2 class="text-xs font-mono uppercase tracking-widest text-blue-500">03 // Contact</h2>
+                <div class="h-[1px] bg-zinc-800 flex-grow"></div>
+            </div>
+            
+            <h2 class="text-4xl text-zinc-100 mb-8 font-light">Let's build something <span class="text-blue-500">robust</span>.</h2>
+            <p class="text-zinc-500 mb-12 max-w-md">
+                Always open to discussing new opportunities in control systems, robotics, and machine learning applications.
+            </p>
+
+            <div class="grid grid-cols-1 gap-6 font-mono text-sm">
+                <a href="mailto:srinanda@iastate.edu" class="flex items-center gap-4 hover:text-blue-500 transition-colors group">
+                    <div class="w-8 h-8 bg-zinc-900 border border-zinc-800 flex items-center justify-center group-hover:border-blue-500 transition-colors">
+                        <i data-lucide="mail" class="w-4 h-4"></i>
+                    </div>
+                    <span>srinanda@iastate.edu</span>
+                </a>
+                <a href="https://www.linkedin.com/in/sri-isu/" target="_blank" class="flex items-center gap-4 hover:text-blue-500 transition-colors group">
+                    <div class="w-8 h-8 bg-zinc-900 border border-zinc-800 flex items-center justify-center group-hover:border-blue-500 transition-colors">
+                        <i data-lucide="linkedin" class="w-4 h-4"></i>
+                    </div>
+                    <span>linkedin.com/in/sri-isu</span>
+                </a>
+                 <a href="https://github.com" target="_blank" class="flex items-center gap-4 hover:text-blue-500 transition-colors group">
+                    <div class="w-8 h-8 bg-zinc-900 border border-zinc-800 flex items-center justify-center group-hover:border-blue-500 transition-colors">
+                        <i data-lucide="github" class="w-4 h-4"></i>
+                    </div>
+                    <span>github.com/srinanda</span>
+                </a>
+            </div>
+
+            <div class="mt-24 pt-8 border-t border-zinc-900/50 flex justify-between font-mono text-[10px] uppercase tracking-tighter text-zinc-600">
+                <span>Built 2026 // HTML5 & Tailwind</span>
+                <span>Ames, Iowa</span>
+            </div>
+        </footer>
     </div>
 
+    <!-- Scripts for Logic -->
     <script>
+        // Initialize Lucide Icons
         lucide.createIcons();
+
         document.addEventListener('DOMContentLoaded', () => {
+            // --- SCROLL SPY LOGIC ---
             const projectRefElement = document.getElementById('project-ref');
             const heroSection = document.getElementById('hero-section');
             const experienceSection = document.getElementById('experience');
-
+            
             function updateActiveVisual(index) {
-                // Update text reference
-                projectRefElement.innerText = index === 'hero' ? `REF: PORTFOLIO_HOME` : `REF: EXPERIENCE_LOG`;
+                if (index === 'hero') {
+                    projectRefElement.innerText = `REF: PORTFOLIO_HOME`;
+                } else if (index === 'experience') {
+                    projectRefElement.innerText = `REF: EXPERIENCE_LOG`;
+                }
 
-                // Remove active from all containers
-                document.querySelectorAll('.visual-container').forEach(el => el.classList.remove('active'));
+                document.querySelectorAll('.visual-container').forEach((el) => {
+                    el.classList.remove('active');
+                });
                 
-                // Add active to the correct one
-                const activeVisual = document.getElementById(`visual-${index}`);
-                if (activeVisual) activeVisual.classList.add('active');
+                const visualId = `visual-${index}`;
+                const activeVisual = document.getElementById(visualId);
+                if (activeVisual) {
+                    activeVisual.classList.add('active');
+                }
             }
 
             const observer = new IntersectionObserver((entries) => {
                 entries.forEach((entry) => {
                     if (entry.isIntersecting) {
-                        if (entry.target.id === 'hero-section') updateActiveVisual('hero');
-                        else if (entry.target.id === 'experience') updateActiveVisual('experience');
+                        if (entry.target.id === 'hero-section') {
+                            updateActiveVisual('hero');
+                        } else if (entry.target.id === 'experience') {
+                            updateActiveVisual('experience');
+                        }
                     }
                 });
-            }, { threshold: 0.5 });
+            }, { threshold: 0.2 });
 
             if(heroSection) observer.observe(heroSection);
             if(experienceSection) observer.observe(experienceSection);
+
+            // --- FILTER LOGIC ---
+            const filterBtns = document.querySelectorAll('.filter-btn');
+            const allProjects = document.querySelectorAll('.project-card');
+            const row1 = document.getElementById('row-1');
+            const row2 = document.getElementById('row-2');
+            const row2Container = document.getElementById('row-2-container');
+
+            filterBtns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    // Remove active class from all buttons
+                    filterBtns.forEach(b => b.classList.remove('active'));
+                    // Add active class to clicked button
+                    btn.classList.add('active');
+
+                    const filterValue = btn.getAttribute('data-filter');
+
+                    // Reset Grid Layout for filtering (flatten structure momentarily)
+                    // We need to move all cards to a single container or handle visibility
+                    // To keep it simple, we will hide/show. For the specific layout requirement (4 top, 3 bottom),
+                    // filtering breaks that specific structure naturally. 
+                    // Best approach: Hide cards, and let remaining cards flow in a standard grid if filtered.
+                    
+                    if (filterValue === 'all') {
+                        // Restore original specific layout logic if needed, or just show all
+                        allProjects.forEach(card => card.style.display = 'flex');
+                        
+                        // Ensure layout structure for 'All' view is preserved (cards are physically in different divs in HTML)
+                        // The HTML structure separates them into row-1 and row-2. 
+                        // Since we aren't moving DOM elements, just showing/hiding is enough.
+                        // However, if we filter, we might want them to regroup.
+                        
+                        // For simplicity in this static file without heavy JS DOM manipulation:
+                        // We will just hide unmatched cards. The grid gaps might look odd if 'row 1' has hidden items.
+                        // But CSS Grid handles hidden items well (they take 0 space).
+                    } else {
+                        allProjects.forEach(card => {
+                            if (card.getAttribute('data-category') === filterValue) {
+                                card.style.display = 'flex';
+                            } else {
+                                card.style.display = 'none';
+                            }
+                        });
+                    }
+                });
+            });
         });
     </script>
 </body>
