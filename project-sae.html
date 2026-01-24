@@ -156,11 +156,12 @@
                 </div>
 
                 <!-- 2. The Aircraft Detail -->
-                <div class="relative w-full h-[380px] border border-zinc-800 rounded-lg overflow-hidden group shadow-2xl shadow-black">
-                    <div class="absolute inset-0 bg-zinc-900">
+                <!-- Changed object-cover to object-contain and bg-zinc-900 to bg-black to show full aircraft -->
+                <div class="relative w-full h-[380px] border border-zinc-800 rounded-lg overflow-hidden group shadow-2xl shadow-black bg-black">
+                    <div class="absolute inset-0 bg-black">
                         <img src="Redrocket.jpg" 
                              alt="Detail view of Redrocket Aircraft" 
-                             class="w-full h-full object-cover object-center opacity-90 transition-transform duration-1000 group-hover:scale-105">
+                             class="w-full h-full object-contain object-center opacity-90 transition-transform duration-1000 group-hover:scale-105">
                     </div>
                     <div class="absolute bottom-0 left-0 w-full bg-gradient-to-t from-black/90 via-black/50 to-transparent p-6">
                         <p class="font-mono text-xs text-blue-400 mb-1">TECHNICAL_VIEW</p>
